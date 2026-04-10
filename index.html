@@ -74,30 +74,24 @@
 </head>
 <body class="flex flex-col min-h-screen">
 
-    <!-- HEADER / HERO SECTION -->
-    <header class="hero-pattern pt-16 pb-24 px-6 relative border-b-4 border-orange-600">
+    <header class="hero-pattern pt-20 pb-32 px-6 relative border-b-4 border-orange-600">
         <div class="max-w-5xl mx-auto text-center relative z-10">
-            <!-- Logo -->
-            <div class="flex justify-center mb-8">
-                <div class="bg-white px-6 py-3 rounded-2xl shadow-lg">
-                    <img src="./assets/img/logo-sunbot.png" alt="Sunbot Logo" class="h-10 object-contain" onerror="this.src='https://placehold.co/200x60/ea580c/white?text=SUNBOT+LOGO'">
-                </div>
+            <div class="flex justify-center mb-10">
+                <img src="./assets/img/logo-sunbot.png" alt="Sunbot Logo" class="h-16 md:h-20 object-contain drop-shadow-[0_10px_25px_rgba(234,88,12,0.4)]" onerror="this.src='https://placehold.co/250x80/transparent/ea580c?text=SUNBOT+LOGO'">
             </div>
             
-            <h1 class="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">
+            <h1 class="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
                 Cổng Thông Tin <span class="gradient-text">Đối Tác Trường Học</span>
             </h1>
             <p class="text-slate-300 text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed">
-                Khám phá hệ sinh thái giáo dục công nghệ mầm non và tìm kiếm giải pháp triển khai giáo dục Steam tối ưu cho Nhà trường
+                Khám phá hệ sinh thái giáo dục công nghệ mầm non và tìm kiếm giải pháp triển khai giáo dục STEAM tối ưu cho Nhà trường.
             </p>
         </div>
     </header>
 
-    <!-- MAIN NAVIGATION CARDS -->
-    <main class="flex-grow max-w-5xl mx-auto px-6 w-full -mt-10 relative z-20 mb-20">
+    <main class="flex-grow max-w-5xl mx-auto px-6 w-full -mt-16 relative z-20 mb-24">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             
-            <!-- Card 1: Proposal -->
             <a href="./school/proposal/" class="portal-card p-8 group block outline-none">
                 <div class="flex items-start justify-between mb-6">
                     <div class="icon-wrapper">
@@ -112,7 +106,6 @@
                 <span class="text-sm font-bold text-slate-400 group-hover:text-orange-600 transition-colors uppercase tracking-widest">Xem đề xuất ➔</span>
             </a>
 
-            <!-- Card 2: Profile -->
             <a href="./school/profile/" class="portal-card p-8 group block outline-none">
                 <div class="flex items-start justify-between mb-6">
                     <div class="icon-wrapper">
@@ -127,7 +120,6 @@
                 <span class="text-sm font-bold text-slate-400 group-hover:text-orange-600 transition-colors uppercase tracking-widest">Xem hồ sơ ➔</span>
             </a>
 
-            <!-- Card 3: Calculator -->
             <a href="./school/calculator/" class="portal-card p-8 group block outline-none">
                 <div class="flex items-start justify-between mb-6">
                     <div class="icon-wrapper">
@@ -142,7 +134,6 @@
                 <span class="text-sm font-bold text-slate-400 group-hover:text-orange-600 transition-colors uppercase tracking-widest">Tính dự toán ➔</span>
             </a>
 
-            <!-- Card 4: Booking -->
             <a href="https://zalo.me/0866109086" target="_blank" rel="noopener noreferrer" class="portal-card p-8 group block outline-none">
                 <div class="flex items-start justify-between mb-6">
                     <div class="icon-wrapper">
@@ -159,37 +150,43 @@
         </div>
     </main>
 
-    <!-- WHY SUNBOT SECTION -->
-    <section class="bg-white py-16 border-t border-slate-200">
-        <div class="max-w-5xl mx-auto px-6">
-            <h2 class="text-2xl font-black text-slate-900 text-center mb-10 uppercase tracking-wide">Vì sao chọn Sunbot?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                <div>
-                    <div class="w-12 h-12 mx-auto rounded-full bg-orange-100 text-orange-600 flex items-center justify-center mb-4 font-bold text-lg">1</div>
-                    <h4 class="font-bold text-slate-800 mb-2">Chương trình chuẩn hóa</h4>
-                    <p class="text-xs text-slate-500 leading-relaxed">Không chỉ là thiết bị, chúng tôi cung cấp hệ thống học liệu và giáo án chuyên nghiệp.</p>
+    <section class="bg-[#0b1120] py-24 relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-orange-600 rounded-full blur-[150px] opacity-10 pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-orange-500 font-black tracking-widest uppercase text-sm">Giải mã sức hút</span>
+                <h2 class="text-3xl md:text-5xl font-black text-white mt-2 mb-6 tracking-tight">VÌ SAO CHỌN <span class="gradient-text">SUNBOT?</span></h2>
+                <div class="w-16 h-1 bg-orange-500 mx-auto rounded-full mb-6"></div>
+                <p class="text-slate-400 max-w-2xl mx-auto text-lg">Hệ sinh thái EdTech thiết kế riêng để trở thành vũ khí cạnh tranh chiến lược, giúp nhà trường bứt phá doanh thu và khẳng định vị thế.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-slate-800/50 backdrop-blur-md p-8 rounded-3xl border border-slate-700 hover:border-orange-500 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(234,88,12,0.2)]">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white text-2xl font-black mb-6 shadow-lg">⭐</div>
+                    <h4 class="font-black text-white text-xl mb-3 uppercase tracking-wide">Bệ phóng Uy Tín</h4>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-0">Chương trình duy nhất được Viện KHGD Việt Nam thẩm định và lọt Top 50 EdTech Đông Nam Á. Chứng nhận danh giá giúp nâng tầm đẳng cấp thương hiệu trường.</p>
                 </div>
-                <div>
-                    <div class="w-12 h-12 mx-auto rounded-full bg-orange-100 text-orange-600 flex items-center justify-center mb-4 font-bold text-lg">2</div>
-                    <h4 class="font-bold text-slate-800 mb-2">Dễ dàng vận hành</h4>
-                    <p class="text-xs text-slate-500 leading-relaxed">Đào tạo giáo viên bài bản, đảm bảo nhà trường có thể tự chủ vận hành lâu dài.</p>
+                <div class="bg-slate-800/50 backdrop-blur-md p-8 rounded-3xl border border-slate-700 hover:border-orange-500 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(234,88,12,0.2)]">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white text-2xl font-black mb-6 shadow-lg">🧲</div>
+                    <h4 class="font-black text-white text-xl mb-3 uppercase tracking-wide">Thỏi nam châm Tuyển sinh</h4>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-0">Phòng STEAM Lab hiện đại cùng Robot công nghệ là "điểm chạm" thị giác bùng nổ, dễ dàng chốt sale và thuyết phục phụ huynh ngay lần đầu tham quan.</p>
                 </div>
-                <div>
-                    <div class="w-12 h-12 mx-auto rounded-full bg-orange-100 text-orange-600 flex items-center justify-center mb-4 font-bold text-lg">3</div>
-                    <h4 class="font-bold text-slate-800 mb-2">Mô hình sinh lời</h4>
-                    <p class="text-xs text-slate-500 leading-relaxed">Tạo điểm nhấn tuyển sinh, giữ chân học sinh và xây dựng dòng tiền bền vững.</p>
+                <div class="bg-slate-800/50 backdrop-blur-md p-8 rounded-3xl border border-slate-700 hover:border-orange-500 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(234,88,12,0.2)]">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white text-2xl font-black mb-6 shadow-lg">📈</div>
+                    <h4 class="font-black text-white text-xl mb-3 uppercase tracking-wide">Sinh lời Bền vững</h4>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-0">Hệ thống đóng gói chuẩn hóa, dễ dàng đào tạo GV nội bộ. Mô hình thu phí ngoại khóa hoặc tăng học phí giúp hoàn vốn cực nhanh và sinh lời dài hạn.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-slate-900 text-slate-400 py-8 text-center text-sm">
+    <footer class="bg-black text-slate-400 py-8 text-center text-sm border-t border-slate-800">
         <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p>&copy; 2026 Kiro Vietnam Education Technology JSC.</p>
+            <p class="text-xs uppercase tracking-widest font-bold">&copy; 2026 Kiro Vietnam Education Technology JSC.</p>
             <div class="flex items-center gap-6 text-xs uppercase tracking-widest font-bold">
-                <a href="#" class="hover:text-white transition-colors">Website</a>
-                <a href="#" class="hover:text-white transition-colors">Hotline: 0866 109 086</a>
+                <a href="https://sunbot.vn" target="_blank" class="hover:text-white transition-colors">Website</a>
+                <a href="tel:0866109086" class="hover:text-white transition-colors">Hotline: 0866 109 086</a>
             </div>
         </div>
     </footer>
