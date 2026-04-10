@@ -28,7 +28,7 @@
             padding-top: 0.05em; padding-bottom: 0.05em;
         }
 
-        /* 3D Text & Buttons inherited from Profile */
+        /* 3D Text & Buttons */
         .text-gradient-3d {
             background: linear-gradient(to bottom, #fdba74, #ea580c);
             -webkit-background-clip: text;
@@ -43,6 +43,7 @@
             background: linear-gradient(135deg, #f97316, #ea580c);
             box-shadow: 0 6px 15px -3px rgba(234, 88, 12, 0.4), inset 0 2px 0 rgba(255, 255, 255, 0.3), inset 0 -2px 0 rgba(0, 0, 0, 0.2);
             color: white; transition: all 0.3s ease;
+            display: inline-flex; justify-content: center; align-items: center;
         }
         .btn-3d-orange:hover {
             transform: translateY(-3px);
@@ -84,13 +85,13 @@
     <nav class="fixed w-full z-50 glass-nav shadow-sm">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex justify-between items-center h-20">
-                <!-- Back & Logo: Cấu hình link quay lại Cổng thông tin -->
+                <!-- Back & Logo -->
                 <div class="flex items-center gap-6">
-                    <a href="../../index.html" class="flex items-center gap-4 group outline-none" title="Quay lại Cổng thông tin">
+                    <a href="https://sunbotvietnam.github.io/portal/" class="flex items-center gap-4 group outline-none" title="Quay lại Cổng thông tin">
                         <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 group-hover:bg-orange-100 group-hover:text-orange-600 transition-colors shadow-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
                         </div>
-                        <img src="../../assets/img/logo-sunbot.png" alt="Sunbot" class="h-10 object-contain drop-shadow-[0_4px_8px_rgba(234,88,12,0.3)] group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/120x40/transparent/ea580c?text=SUNBOT'"/>
+                        <img src="assets/img/logo-sunbot.png" alt="Sunbot Logo" class="h-10 object-contain drop-shadow-[0_4px_8px_rgba(234,88,12,0.3)] group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/120x40/transparent/ea580c?text=SUNBOT'"/>
                     </a>
                 </div>
                 
@@ -110,7 +111,7 @@
     </nav>
 
     <!-- NÚT QUAY LẠI CƠ ĐỘNG (FLOATING BACK BUTTON) -->
-    <a href="../../index.html" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 btn-3d-orange px-5 py-3.5 rounded-full flex items-center gap-2.5 font-bold shadow-2xl hover:-translate-y-1 transition-transform group">
+    <a href="https://sunbotvietnam.github.io/portal/" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 btn-3d-orange px-5 py-3.5 rounded-full flex items-center gap-2.5 font-bold shadow-2xl hover:-translate-y-1 transition-transform group outline-none">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
         <span class="hidden md:inline uppercase tracking-wider text-xs">Về Cổng Thông Tin</span>
     </a>
@@ -143,7 +144,6 @@
             </div>
             <div class="unified-media-frame">
                 <div class="media-inner h-80">
-                    <!-- Ảnh 1: Hero Classroom chuẩn yêu cầu -->
                     <img src="proposal/assets/img/hero-classroom.jpg" alt="Lớp học Sunbot" onerror="this.src='https://placehold.co/800x600/cbd5e1/475569?text=Hero+Classroom'">
                 </div>
             </div>
@@ -336,14 +336,12 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="unified-media-frame group cursor-pointer">
                     <div class="media-inner h-64">
-                        <!-- Ảnh 2: Proof 01 chuẩn yêu cầu -->
                         <img src="proposal/assets/img/proof-01.jpg" alt="Giờ học thực tế" class="group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/cbd5e1/475569?text=Giờ+học+thực+tế'">
                     </div>
                     <p class="text-center mt-4 font-bold text-slate-800 text-sm pb-2">Hàng ngàn trẻ em hào hứng trong giờ học</p>
                 </div>
                 <div class="unified-media-frame group cursor-pointer">
                     <div class="media-inner h-64">
-                        <!-- Ảnh 3: Proof 02 chuẩn yêu cầu -->
                         <img src="proposal/assets/img/proof-02.jpg" alt="STEAM Lab" class="group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/cbd5e1/475569?text=Phòng+STEAM+Lab'">
                     </div>
                     <p class="text-center mt-4 font-bold text-slate-800 text-sm pb-2">Không gian phòng học STEAM Lab tiêu chuẩn</p>
@@ -404,8 +402,7 @@
     <!-- FOOTER -->
     <footer class="bg-black py-8 border-t border-slate-800 text-center">
         <div class="max-w-7xl mx-auto px-6">
-            <!-- Cập nhật đường dẫn logo footer -->
-            <img src="../../assets/img/logo-sunbot.png" alt="Sunbot Logo" class="h-8 object-contain mx-auto mb-4 grayscale opacity-50" onerror="this.src='https://placehold.co/200x60/transparent/ea580c?text=SUNBOT+LOGO'"/>
+            <img src="assets/img/logo-sunbot.png" alt="Sunbot Logo" class="h-8 object-contain mx-auto mb-4 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer" onclick="window.location.href='https://sunbotvietnam.github.io/portal/'" onerror="this.src='https://placehold.co/200x60/transparent/ea580c?text=SUNBOT+LOGO'"/>
             <p class="text-slate-500 text-xs font-bold uppercase tracking-widest">&copy; 2026 Kiro Vietnam Education Technology JSC.</p>
         </div>
     </footer>
