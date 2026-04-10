@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUNBOT | Hệ Sinh Thái Giáo Dục Công Nghệ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-orange: #ea580c;
+            --brand-orange-light: #f97316;
+            --brand-orange-dark: #c2410c;
+            --bg-slate: #0f172a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Thanh cuộn Tech */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1e293b; }
+        ::-webkit-scrollbar-thumb { 
+            background: linear-gradient(to bottom, #f97316, #ea580c); 
+            border-radius: 10px; 
+        }
+
+        /* Khắc phục triệt để lỗi lẹm dấu tiếng Việt (Đ, Ả, Ề...) */
+        h1, h2, h3, h4, h5, h6 {
+            line-height: 1.4 !important;
+            padding-top: 0.05em; 
+            padding-bottom: 0.05em;
+        }
+
+        /* 3D Text & Gradients */
+        .text-gradient-3d {
+            background: linear-gradient(to bottom, #fdba74, #ea580c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            filter: drop-shadow(0px 2px 2px rgba(234, 88, 12, 0.2));
+            /* Đảm bảo khung Gradient không cắt mất dấu */
+            display: inline-block;
+            padding-top: 0.1em;
+            padding-bottom: 0.1em;
+        }
+
+        /* Nút bấm 3D Glossy (Bóng bẩy) */
+        .btn-3d-orange {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            box-shadow:
+                0 6px 15px -3px rgba(234, 88, 12, 0.4),
+                0 4px 6px -2px rgba(234, 88, 12, 0.2),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+            color: white;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-3d-orange:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                0 15px 25px -5px rgba(234, 88, 12, 0.5),
+                0 8px 10px -5px rgba(234, 88, 12, 0.3),
+                inset 0 2px 0 rgba(255, 255, 255, 0.4),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        /* Khung Media Đồng Bộ (Ép mọi hình ảnh/video vào 1 chuẩn) */
+        .unified-media-frame {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            padding: 8px;
+            box-shadow: 
+                0 10px 30px -10px rgba(0, 0, 0, 0.1),
+                inset 0 2px 4px rgba(255,255,255,0.8);
+            border: 1px solid #e2e8f0;
+            transition: all 0.4s ease;
+        }
+        .unified-media-frame.hoverable:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 20px 40px -10px rgba(234, 88, 12, 0.15),
+                inset 0 2px 4px rgba(255,255,255,0.8);
+            border-color: #fdba74;
+        }
+        .media-inner {
+            border-radius: 1rem;
+            overflow: hidden;
+            position: relative;
+            background: #0f172a; 
+            aspect-ratio: 16 / 9; 
+            width: 100%;
+        }
+        
+        .media-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Cấu hình hiển thị Video Youtube chuẩn (Không bị zoom) */
+        .media-inner iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* 3D Feature Card */
+        .tech-card-3d {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            border: 1px solid #f1f5f9;
+            box-shadow: 
+                0 10px 20px -5px rgba(0, 0, 0, 0.05),
+                inset 0 -4px 0 0 #f1f5f9;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .tech-card-3d:hover {
+            transform: translateY(-10px);
+            border-color: #fed7aa;
+            box-shadow: 
+                0 25px 50px -12px rgba(234, 88, 12, 0.15),
+                inset 0 -4px 0 0 #ea580c;
+        }
+
+        /* Icon 3D */
+        .icon-3d-box {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #fff7ed, #fed7aa);
+            box-shadow: 
+                0 10px 15px -3px rgba(234, 88, 12, 0.2),
+                inset 0 2px 4px rgba(255,255,255,1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #fdba74;
+        }
+
+        /* Navbar & Animations */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            bottom: -4px; left: 50%; background-color: #ea580c;
+            transition: all 0.3s ease; transform: translateX(-50%);
+        }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .nav-link.active { color: #ea580c; font-weight: 700; }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .animate-on-scroll.show { opacity: 1; transform: translateY(0); }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        
+        .tab-btn.active { color: #ea580c; border-bottom-color: #ea580c; }
+        
+        /* Hero Image overlay fix */
+        .hero-bg {
+            background-color: #f1f5f9;
+        }
+        .hero-img-cover {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0.15;
+            mix-blend-mode: multiply;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-4 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <img src="./logo-sunbot.png" alt="Sunbot" class="h-10 object-contain drop-shadow-md" onerror="this.src='https://placehold.co/150x50/transparent/ea580c?text=SUNBOT+LOGO'"/>
+                </div>
+                
+                <div class="hidden lg:flex space-x-10">
+                    <a href="#ve-chung-toi" class="nav-link text-[13px] font-bold uppercase tracking-wider text-slate-600 hover:text-orange-600 py-2 transition-colors">Về Chúng Tôi</a>
+                    <a href="#nhan-su" class="nav-link text-[13px] font-bold uppercase tracking-wider text-slate-600 hover:text-orange-600 py-2 transition-colors">Đội Ngũ</a>
+                    <a href="#san-pham" class="nav-link text-[13px] font-bold uppercase tracking-wider text-slate-600 hover:text-orange-600 py-2 transition-colors">Hệ Sinh Thái</a>
+                    <a href="#video-thuc-te" class="nav-link text-[13px] font-bold uppercase tracking-wider text-slate-600 hover:text-orange-600 py-2 transition-colors">Trải Nghiệm</a>
+                </div>
+                
+                <div class="hidden md:block">
+                    <a href="mailto:sunbotvietnam@gmail.com" class="btn-3d-orange px-8 py-3 rounded-full text-sm font-bold tracking-wide">Liên Hệ Hợp Tác</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 01. HERO SECTION -->
+    <section class="relative w-full min-h-[90vh] flex items-center justify-center pt-20 hero-bg overflow-hidden">
+        <img src="./assets/images/hero-bg.jpg" class="hero-img-cover" alt="" onerror="this.style.display='none'">
+        
+        <!-- Vòng sáng 3D nền -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-400 rounded-full blur-[120px] opacity-20 animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-400 rounded-full blur-[120px] opacity-10"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+            <div class="animate-on-scroll z-10 pt-10">
+                <div class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-orange-200 bg-white shadow-sm text-orange-600 font-black tracking-widest text-[11px] mb-6 uppercase">
+                    <span class="relative flex h-3 w-3">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-3 w-3 bg-orange-500"></span>
+                    </span>
+                    Sứ Giả Đổi Mới Giáo Dục
+                </div>
+                <h1 class="text-5xl md:text-6xl lg:text-[72px] font-black text-slate-900 mb-6 tracking-tight">
+                    Kiến tạo thế hệ<br>
+                    <span class="text-gradient-3d">Tương lai số</span>
+                </h1>
+                <p class="text-lg text-slate-600 font-medium mb-10 max-w-xl pr-4">
+                    Tiên phong xây dựng hệ sinh thái giáo dục công nghệ "Made in Vietnam" cho trẻ mầm non. Gieo mầm tư duy logic, kỹ năng giải quyết vấn đề ngay trong giai đoạn vàng của sự phát triển.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#ve-chung-toi" class="btn-3d-orange px-8 py-4 rounded-full text-sm font-bold tracking-wide uppercase">Khám Phá Sunbot</a>
+                </div>
+            </div>
+            
+            <!-- Hero Image 3D Frame -->
+            <div class="hidden lg:block animate-on-scroll delay-200 relative">
+                <div class="unified-media-frame hoverable rotate-2 hover:rotate-0 transition-transform duration-500">
+                    <div class="media-inner">
+                        <img src="./assets/images/hero-overlay-lop-hoc.jpg" alt="Lớp học Sunbot" onerror="this.src='https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=800&q=80'">
+                    </div>
+                </div>
+                <!-- 3D Floating Badge -->
+                <div class="absolute -bottom-8 -left-8 bg-white p-5 rounded-2xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.15)] border border-slate-100 flex items-center gap-4 animate-bounce" style="animation-duration: 4s;">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-300 to-green-500 flex items-center justify-center text-white font-black text-xl shadow-inner">✓</div>
+                    <div>
+                        <p class="text-3xl font-black text-slate-900 mb-0">100%</p>
+                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1">Trẻ Yêu Thích</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 01.5 HOLONIQ BANNER (VINH DANH TOÀN CẦU) -->
+    <section class="w-full bg-[#0f172a] border-y border-slate-800 py-6 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMSIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjEpIi8+PC9zdmc+')]"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
+            <div class="text-center md:text-right">
+                <p class="text-orange-500 font-bold uppercase tracking-widest text-[11px] mb-1">Bình chọn khách quan uy tín toàn cầu</p>
+                <p class="text-white font-black text-xl md:text-2xl tracking-wide">TOP 50 EDTECH ĐÔNG NAM Á</p>
+            </div>
+            <div class="hidden md:block w-px h-12 bg-slate-700"></div>
+            <div class="flex items-center gap-4 bg-white/10 px-6 py-3 rounded-2xl backdrop-blur-md border border-white/5">
+                <div class="text-white font-black text-2xl tracking-tighter">Holon<span class="text-blue-400">IQ</span></div>
+                <div class="text-slate-400 text-sm font-medium border-l border-slate-600 pl-4">Đơn vị cung cấp thông tin <br>giáo dục hàng đầu thế giới</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 02. VỀ CHÚNG TÔI & GIÁ TRỊ CỐT LÕI -->
+    <section id="ve-chung-toi" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-20 animate-on-scroll">
+                <span class="text-orange-600 font-black tracking-widest uppercase text-sm">Về Chúng Tôi</span>
+                <h2 class="text-4xl md:text-5xl font-black text-slate-900 mt-2 mb-6 tracking-tight">TẦM NHÌN & <span class="text-gradient-3d">SỨ MỆNH</span></h2>
+                <div class="w-20 h-1.5 bg-orange-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24 items-center">
+                <div class="animate-on-scroll">
+                    <p class="text-slate-600 text-lg mb-8 text-justify">
+                        <strong class="text-slate-900">Sunbot</strong> hướng tới trở thành thương hiệu hàng đầu trong lĩnh vực giáo dục công nghệ cho trẻ mầm non tại Việt Nam và khu vực. Chúng tôi kiến tạo một thế hệ trẻ thông minh, sáng tạo và sẵn sàng hội nhập trong kỷ nguyên số thông qua các giải pháp STEAM và robot lập trình hiện đại.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="tech-card-3d p-6 flex gap-5 items-start">
+                            <div class="icon-3d-box shrink-0 text-orange-600">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-black text-slate-900 mb-1">Tiên phong đổi mới</h4>
+                                <p class="text-slate-600 text-[14px] mb-0">Nuôi dưỡng tư duy số và kỹ năng thế kỷ 21 cho trẻ em Việt Nam ngay từ giai đoạn mầm non.</p>
+                            </div>
+                        </div>
+                        <div class="tech-card-3d p-6 flex gap-5 items-start">
+                            <div class="icon-3d-box shrink-0 text-orange-600">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-black text-slate-900 mb-1">Kết nối giáo dục</h4>
+                                <p class="text-slate-600 text-[14px] mb-0">Tạo dựng môi trường học tập sáng tạo, là cầu nối bền vững gắn kết giữa Gia đình và Nhà trường.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4 Giá trị cốt lõi -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 animate-on-scroll delay-200">
+                    <div class="tech-card-3d p-8 text-center bg-gradient-to-b from-white to-slate-50">
+                        <div class="icon-3d-box mx-auto mb-4 text-orange-600"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg></div>
+                        <h4 class="font-black text-slate-900 mb-2">Sáng tạo & Đổi mới</h4>
+                        <p class="text-[13px] text-slate-500 mb-0">Cải tiến và ứng dụng công nghệ tiên tiến vào giáo dục.</p>
+                    </div>
+                    <div class="tech-card-3d p-8 text-center bg-gradient-to-b from-white to-slate-50 sm:mt-8">
+                        <div class="icon-3d-box mx-auto mb-4 text-orange-600"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg></div>
+                        <h4 class="font-black text-slate-900 mb-2">Thông minh</h4>
+                        <p class="text-[13px] text-slate-500 mb-0">Tạo ra những trải nghiệm học tập độc đáo và hiệu quả.</p>
+                    </div>
+                    <div class="tech-card-3d p-8 text-center bg-gradient-to-b from-white to-slate-50">
+                        <div class="icon-3d-box mx-auto mb-4 text-orange-600"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg></div>
+                        <h4 class="font-black text-slate-900 mb-2">Gắn kết</h4>
+                        <p class="text-[13px] text-slate-500 mb-0">Xây dựng mối quan hệ vững chắc Gia đình - Nhà trường.</p>
+                    </div>
+                    <div class="tech-card-3d p-8 text-center bg-gradient-to-b from-white to-slate-50 sm:mt-8">
+                        <div class="icon-3d-box mx-auto mb-4 text-orange-600"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                        <h4 class="font-black text-slate-900 mb-2">Tự hào VN</h4>
+                        <p class="text-[13px] text-slate-500 mb-0">Sản phẩm công nghệ giáo dục tự hào trí tuệ Việt.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cơ sở pháp lý -->
+            <div class="tech-card-3d p-8 lg:p-12 animate-on-scroll">
+                <h3 class="text-2xl font-black text-slate-900 mb-8 border-b border-slate-100 pb-4">Nền Tảng Pháp Lý & Chuyên Môn</h3>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <h4 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">Đơn vị chủ quản</h4>
+                        <ul class="space-y-4 text-[14px] text-slate-700">
+                            <li><strong class="text-slate-900">Tên:</strong> CTCP Công nghệ Giáo dục Kiro Việt Nam</li>
+                            <li><strong class="text-slate-900">Tên GD QT:</strong> KIRO EDUCATION CO. JSC</li>
+                            <li><strong class="text-slate-900">Mã số thuế:</strong> 0108919688</li>
+                            <li><strong class="text-slate-900">Sở hữu trí tuệ:</strong> Thương hiệu Sunbot là tài sản hợp pháp của KIRO Việt Nam, được pháp luật bảo hộ.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-2xl border border-orange-200 shadow-inner">
+                        <h4 class="text-xs font-black text-orange-600 uppercase tracking-widest mb-4">Thẩm Định Chuyên Môn Quốc Gia</h4>
+                        <p class="text-[14px] text-slate-800 mb-4 font-medium">Sunbot là chương trình giáo dục công nghệ mầm non duy nhất hiện nay được thẩm định & chứng nhận bởi:</p>
+                        <ul class="space-y-3 text-[14px] text-slate-900 font-bold">
+                            <li class="flex gap-3 items-start"><span class="text-orange-500">❖</span> Viện Nghiên cứu Giáo dục Phát triển Tiềm năng Con người (IPD).</li>
+                            <li class="flex gap-3 items-start"><span class="text-orange-500">❖</span> Trung tâm Nghiên cứu Giáo dục Mầm non – Viện Khoa học Giáo dục Việt Nam (Bộ GD&ĐT).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 03. ĐỘI NGŨ NHÂN SỰ (INTERACTIVE TABS) -->
+    <section id="nhan-su" class="py-24 bg-[#0f172a] text-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <span class="text-orange-500 font-black tracking-widest uppercase text-sm">Hệ Thống Vận Hành</span>
+                <h2 class="text-4xl md:text-5xl font-black mt-2 mb-6 tracking-tight">ĐỘI NGŨ <span class="text-gradient-3d">CHUYÊN GIA</span></h2>
+                <div class="w-20 h-1.5 bg-orange-500 mx-auto rounded-full mb-6"></div>
+                <p class="text-slate-400 max-w-2xl mx-auto text-lg">Bộ máy vận hành chuyên nghiệp, tối ưu hóa nguồn lực. Tự hào sở hữu đội ngũ nhân sự tâm huyết cùng sự đồng hành của các chuyên gia giáo dục đầu ngành.</p>
+            </div>
+
+            <!-- Tab Buttons (Dark Mode) -->
+            <div class="flex flex-wrap justify-center gap-2 md:gap-6 mb-12 border-b border-slate-700 animate-on-scroll">
+                <button onclick="switchTab('tab-lanh-dao', this)" class="tab-btn active px-6 py-4 text-sm font-bold uppercase tracking-wider text-slate-400 border-b-4 border-transparent hover:text-white transition-colors outline-none">Ban Lãnh Đạo</button>
+                <button onclick="switchTab('tab-co-van', this)" class="tab-btn px-6 py-4 text-sm font-bold uppercase tracking-wider text-slate-400 border-b-4 border-transparent hover:text-white transition-colors outline-none">Hội Đồng Cố Vấn</button>
+                <button onclick="switchTab('tab-doi-tac', this)" class="tab-btn px-6 py-4 text-sm font-bold uppercase tracking-wider text-slate-400 border-b-4 border-transparent hover:text-white transition-colors outline-none">Đơn Vị Đồng Hành</button>
+            </div>
+
+            <!-- Tab Content: Ban Lãnh Đạo -->
+            <div id="tab-lanh-dao" class="tab-content animate-on-scroll">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                    <!-- CEO -->
+                    <div class="bg-slate-800 p-8 rounded-3xl text-center border border-slate-700 shadow-2xl hover:border-orange-500 transition-colors">
+                        <div class="w-40 h-40 mx-auto rounded-full p-2 bg-gradient-to-br from-orange-400 to-orange-600 mb-6">
+                            <img src="./assets/images/nhan-su-ceo.jpg" alt="CEO" class="w-full h-full rounded-full object-cover border-4 border-slate-900" onerror="this.src='https://placehold.co/300x300/1e293b/white?text=CEO'">
+                        </div>
+                        <h4 class="text-2xl font-black uppercase tracking-wide">Nguyễn Tường Vân</h4>
+                        <p class="text-orange-400 font-bold text-xs uppercase tracking-widest mt-2 mb-4">Cofounder & CEO</p>
+                        <p class="text-sm text-slate-300 px-4">Thạc sĩ Châu Á học - ĐHQG HN. Cử nhân Kinh tế Ngoại thương. Hơn 16 năm kinh nghiệm quản lý và triển khai các dự án giáo dục.</p>
+                    </div>
+                    <!-- Chairman -->
+                    <div class="bg-slate-800 p-8 rounded-3xl text-center border border-slate-700 shadow-2xl hover:border-orange-500 transition-colors">
+                        <div class="w-40 h-40 mx-auto rounded-full p-2 bg-gradient-to-br from-slate-400 to-slate-600 mb-6">
+                            <img src="./assets/images/nhan-su-chairman.jpg" alt="Chairman" class="w-full h-full rounded-full object-cover border-4 border-slate-900" onerror="this.src='https://placehold.co/300x300/1e293b/white?text=Chairman'">
+                        </div>
+                        <h4 class="text-2xl font-black uppercase tracking-wide">Nguyễn Trí Hiển</h4>
+                        <p class="text-slate-400 font-bold text-xs uppercase tracking-widest mt-2 mb-4">Chairman of the Board</p>
+                        <p class="text-sm text-slate-300 px-4">16 năm kinh nghiệm Tư vấn chiến lược EdTech & E-learning Implementing Expert. Đồng Trưởng làng Edtech Techfest.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Hội đồng cố vấn -->
+            <div id="tab-co-van" class="tab-content hidden animate-on-scroll">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-slate-800 rounded-2xl p-6 text-center border border-slate-700 hover:border-orange-500 transition-colors">
+                        <h4 class="font-black text-[15px] mb-2 text-white">PGS.TS.NGND<br>Nguyễn Võ Kỳ Anh</h4>
+                        <div class="w-10 h-1 bg-orange-500 mx-auto mb-3 rounded"></div>
+                        <p class="text-[10px] text-orange-400 font-bold uppercase tracking-widest mb-3">Viện trưởng IPD</p>
+                        <p class="text-xs text-slate-400">Nguyên vụ trưởng Vụ GD thể chất - Bộ GDĐT.</p>
+                    </div>
+                    <div class="bg-slate-800 rounded-2xl p-6 text-center border border-slate-700 hover:border-orange-500 transition-colors">
+                        <h4 class="font-black text-[15px] mb-2 text-white">PGS.TS<br>Trần Xuân Tú</h4>
+                        <div class="w-10 h-1 bg-orange-500 mx-auto mb-3 rounded"></div>
+                        <p class="text-[10px] text-orange-400 font-bold uppercase tracking-widest mb-3">Chuyên gia Công nghệ</p>
+                        <p class="text-xs text-slate-400">Viện trưởng Viện CNTT, ĐHQG Hà Nội (ITI-VNU).</p>
+                    </div>
+                    <div class="bg-slate-800 rounded-2xl p-6 text-center border border-slate-700 hover:border-orange-500 transition-colors">
+                        <h4 class="font-black text-[15px] mb-2 text-white">PGS.TS<br>Nguyễn Thị Mỹ Trinh</h4>
+                        <div class="w-10 h-1 bg-orange-500 mx-auto mb-3 rounded"></div>
+                        <p class="text-[10px] text-orange-400 font-bold uppercase tracking-widest mb-3">Cố vấn chuyên môn</p>
+                        <p class="text-xs text-slate-400">Giám đốc Trung tâm NC GD Mầm non – Viện KHGD VN.</p>
+                    </div>
+                    <div class="bg-slate-800 rounded-2xl p-6 text-center border border-slate-700 hover:border-orange-500 transition-colors">
+                        <h4 class="font-black text-[15px] mb-2 text-white">PGS.TS<br>Lưu Minh Hường</h4>
+                        <div class="w-10 h-1 bg-orange-500 mx-auto mb-3 rounded"></div>
+                        <p class="text-[10px] text-orange-400 font-bold uppercase tracking-widest mb-3">Chuyên gia giáo dục sớm</p>
+                        <p class="text-xs text-slate-400">P. Viện trưởng viện IPD.</p>
+                    </div>
+                    <div class="bg-slate-800 rounded-2xl p-6 text-center border border-slate-700">
+                        <h4 class="font-black text-[15px] mb-2 text-white">ThS. Phạm Thị Mai Chi</h4>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-2">Cố vấn chuyên môn</p>
+                    </div>
+                    <div class="bg-slate-800 rounded-2xl p-6 text-center border border-slate-700">
+                        <h4 class="font-black text-[15px] mb-2 text-white">ThS. Bùi Kim Tuyến</h4>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-2">Cố vấn chuyên môn</p>
+                    </div>
+                    <div class="bg-slate-800 rounded-2xl p-6 text-center border border-slate-700">
+                        <h4 class="font-black text-[15px] mb-2 text-white">ThS. Nguyễn Thị Nhỏ</h4>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-2">Giảng viên sư phạm</p>
+                    </div>
+                    <div class="bg-slate-800 rounded-2xl p-6 text-center border border-slate-700">
+                        <h4 class="font-black text-[15px] mb-2 text-white">ThS. Bùi Mạc Dương</h4>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-2">GĐ TT Chuyển giao IPD</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Đối Tác -->
+            <div id="tab-doi-tac" class="tab-content hidden animate-on-scroll">
+                <div class="bg-slate-800 rounded-3xl p-12 text-center border border-slate-700 shadow-2xl max-w-4xl mx-auto">
+                    <h3 class="text-2xl font-black text-white mb-10">Các Tổ Chức Đồng Hành Chiến Lược</h3>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <span class="bg-slate-900 border border-slate-600 text-white px-8 py-4 rounded-full text-[15px] font-bold shadow-inner">Viện IPD</span>
+                        <span class="bg-slate-900 border border-slate-600 text-white px-8 py-4 rounded-full text-[15px] font-bold shadow-inner">Viện KHGD Việt Nam</span>
+                        <span class="bg-slate-900 border border-slate-600 text-white px-8 py-4 rounded-full text-[15px] font-bold shadow-inner">VIETNAM SILICON VALLEY</span>
+                        <span class="bg-slate-900 border border-slate-600 text-white px-8 py-4 rounded-full text-[15px] font-bold shadow-inner">KDI Education</span>
+                        <span class="bg-slate-900 border border-slate-600 text-white px-8 py-4 rounded-full text-[15px] font-bold shadow-inner">KidsOnline</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 04. HỆ SINH THÁI (SẢN PHẨM) -->
+    <section id="san-pham" class="py-24 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-20 animate-on-scroll">
+                <span class="text-orange-600 font-black tracking-widest uppercase text-sm">Hệ sinh thái toàn diện</span>
+                <h2 class="text-4xl md:text-5xl font-black text-slate-900 mt-2 mb-6 tracking-tight">SẢN PHẨM <span class="text-gradient-3d">CHIẾN LƯỢC</span></h2>
+                <div class="w-20 h-1.5 bg-orange-500 mx-auto rounded-full mb-6"></div>
+                <p class="text-slate-600 max-w-2xl mx-auto text-lg">Phòng học STEAM Lab được trang bị đầy đủ thiết bị phần cứng, phần mềm, giáo án để dạy và học với 3 chương trình chuyên biệt mạnh nhất hiện nay.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Sản phẩm 1 -->
+                <div class="tech-card-3d overflow-hidden animate-on-scroll flex flex-col p-2">
+                    <div class="unified-media-frame hoverable !p-1 !rounded-2xl !shadow-none !border-none mb-4">
+                        <div class="media-inner">
+                            <img src="./assets/images/sp-lap-trinh.jpg" alt="Lập Trình" onerror="this.src='https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=800&q=80'">
+                            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded font-black text-[10px] text-slate-800 uppercase tracking-widest shadow-sm">Cốt Lõi</div>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 flex-1 flex flex-col">
+                        <h3 class="text-2xl font-black text-slate-900 uppercase mb-4 tracking-tight">Lập Trình Tư Duy<br><span class="text-lg text-orange-600">Cùng Sunbot</span></h3>
+                        <p class="text-slate-600 text-[14px] mb-6 flex-1">Học tập ứng dụng Robot, trẻ khám phá cuộc sống và hình thành tư duy giải quyết vấn đề từ sớm.</p>
+                        <ul class="space-y-3 text-[13px] text-slate-700 font-bold border-t border-slate-100 pt-5">
+                            <li class="flex items-center gap-3"><div class="w-5 h-5 rounded bg-orange-100 text-orange-600 flex items-center justify-center">✓</div> Quan sát & Phân tích sự vật</li>
+                            <li class="flex items-center gap-3"><div class="w-5 h-5 rounded bg-orange-100 text-orange-600 flex items-center justify-center">✓</div> Tư duy Toán học bước đi</li>
+                            <li class="flex items-center gap-3"><div class="w-5 h-5 rounded bg-orange-100 text-orange-600 flex items-center justify-center">✓</div> Tư duy Thử - Sai - Sửa</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Sản phẩm 2 -->
+                <div class="tech-card-3d overflow-hidden animate-on-scroll delay-100 flex flex-col p-2 border-orange-200 shadow-[0_20px_40px_-10px_rgba(234,88,12,0.15)] transform scale-[1.02]">
+                    <div class="unified-media-frame hoverable !p-1 !rounded-2xl !shadow-none !border-none mb-4">
+                        <div class="media-inner">
+                            <img src="./assets/images/sp-steam.jpg" alt="STEAM" onerror="this.src='https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80'">
+                            <div class="absolute top-4 left-4 btn-3d-orange px-3 py-1 rounded font-black text-[10px] uppercase tracking-widest shadow-md">Dự Án Thực Tế</div>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 flex-1 flex flex-col bg-orange-50/50 rounded-xl">
+                        <h3 class="text-2xl font-black text-slate-900 uppercase mb-4 tracking-tight mt-4">STEAM Khoa Học<br><span class="text-lg text-orange-600">Cùng Sunbot</span></h3>
+                        <p class="text-slate-600 text-[14px] mb-6 flex-1">Học tái chế vật liệu phế thải thành máy móc có ích dựa trên nguyên lý Khoa học, Toán học, Vật lý. Hơn 100 bài học thiết kế chuẩn giáo dục sớm.</p>
+                        <ul class="space-y-3 text-[13px] text-slate-800 font-bold border-t border-orange-200 pt-5">
+                            <li class="flex items-center gap-3"><div class="w-5 h-5 rounded bg-orange-500 text-white flex items-center justify-center">✓</div> Kỹ năng làm việc nhóm</li>
+                            <li class="flex items-center gap-3"><div class="w-5 h-5 rounded bg-orange-500 text-white flex items-center justify-center">✓</div> Phân công & Lãnh đạo</li>
+                            <li class="flex items-center gap-3"><div class="w-5 h-5 rounded bg-orange-500 text-white flex items-center justify-center">✓</div> Trực tiếp chế tạo & Vận hành</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Sản phẩm 3 -->
+                <div class="tech-card-3d overflow-hidden animate-on-scroll delay-200 flex flex-col p-2">
+                    <div class="unified-media-frame hoverable !p-1 !rounded-2xl !shadow-none !border-none mb-4">
+                        <div class="media-inner flex items-center justify-center bg-[#0f172a]">
+                            <img src="./assets/images/sp-robot.jpg" alt="Robot" class="opacity-80" onerror="this.src='https://placehold.co/600x400/0f172a/ea580c?text=ROBOT+MẶT+TRỜI'">
+                            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded font-black text-[10px] text-slate-800 uppercase tracking-widest shadow-sm">Thiết Bị Lõi</div>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 flex-1 flex flex-col">
+                        <h3 class="text-2xl font-black text-slate-900 uppercase mb-4 tracking-tight">Robot Mặt Trời<br><span class="text-lg text-slate-500">Thương hiệu Việt</span></h3>
+                        <p class="text-slate-600 text-[14px] mb-6 flex-1">Robot lập trình dành cho mầm non thương hiệu Việt đầu tiên. Ngoại hình bắt mắt, thân thiện. Trải nghiệm học tập chủ động qua các nút điều hướng.</p>
+                        <ul class="space-y-3 text-[13px] text-slate-700 font-bold border-t border-slate-100 pt-5">
+                            <li class="flex items-center gap-3"><div class="w-5 h-5 rounded bg-orange-100 text-orange-600 flex items-center justify-center">✓</div> An toàn tuyệt đối cho Mầm non</li>
+                            <li class="flex items-center gap-3"><div class="w-5 h-5 rounded bg-orange-100 text-orange-600 flex items-center justify-center">✓</div> Giao diện nút bấm trực quan</li>
+                            <li class="flex items-center gap-3"><div class="w-5 h-5 rounded bg-orange-100 text-orange-600 flex items-center justify-center">✓</div> Rèn luyện định hướng không gian</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 04.5 VIDEOS (TRẢI NGHIỆM THỰC TẾ) -->
+    <section id="video-thuc-te" class="py-24 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <span class="text-orange-600 font-black tracking-widest uppercase text-sm">Góc nhìn trực quan</span>
+                <h2 class="text-4xl md:text-5xl font-black text-slate-900 mt-2 mb-6 tracking-tight">THỰC TẾ <span class="text-gradient-3d">SINH ĐỘNG</span></h2>
+                <div class="w-20 h-1.5 bg-orange-500 mx-auto rounded-full mb-6"></div>
+                <p class="text-slate-600 max-w-2xl mx-auto text-lg">Khám phá tổng quan chương trình và những giờ học thực tế đầy cảm hứng của trẻ cùng Sunbot.</p>
+            </div>
+
+            <!-- Các Video sẽ được cố định chắc chắn -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-on-scroll">
+                
+                <!-- Video 1 -->
+                <div>
+                    <div class="unified-media-frame">
+                        <div class="media-inner">
+                            <!-- Đã sửa allowfullscreen và xóa tham số gây lỗi -->
+                            <iframe src="https://www.youtube.com/embed/FNnTcqDDbp8?rel=0" title="Tổng quan chương trình Sunbot" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="mt-5 text-center">
+                        <span class="inline-block bg-orange-100 text-orange-600 font-black text-[10px] uppercase px-3 py-1 rounded mb-2">Video 01</span>
+                        <h4 class="font-black text-slate-800 uppercase tracking-wide text-[15px]">Tổng quan chương trình Sunbot</h4>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div>
+                    <div class="unified-media-frame">
+                        <div class="media-inner">
+                            <iframe src="https://www.youtube.com/embed/Cy05o_qWHEQ?rel=0" title="Giờ học thực tế cùng Sunbot" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="mt-5 text-center">
+                        <span class="inline-block bg-orange-100 text-orange-600 font-black text-[10px] uppercase px-3 py-1 rounded mb-2">Video 02</span>
+                        <h4 class="font-black text-slate-800 uppercase tracking-wide text-[15px]">Giờ học thực tế đầy cảm hứng</h4>
+                    </div>
+                </div>
+
+                <!-- Video 3 -->
+                <div>
+                    <div class="unified-media-frame">
+                        <div class="media-inner">
+                            <iframe src="https://www.youtube.com/embed/HkXl-Svun4g?rel=0" title="Phòng học STEAM Lab thực tế" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="mt-5 text-center">
+                        <span class="inline-block bg-orange-100 text-orange-600 font-black text-[10px] uppercase px-3 py-1 rounded mb-2">Video 03</span>
+                        <h4 class="font-black text-slate-800 uppercase tracking-wide text-[15px]">Phòng STEAM Lab thực tế</h4>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 05. CHẶNG ĐƯỜNG & THÀNH TỰU -->
+    <section id="thanh-tuu" class="py-24 bg-[#0f172a] text-white border-t border-slate-800 overflow-hidden relative">
+        <!-- Background Accents -->
+        <div class="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-slate-800/50 to-transparent pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+                
+                <!-- Lịch sử -->
+                <div class="animate-on-scroll">
+                    <span class="text-orange-500 font-black tracking-widest uppercase text-sm">Hành trình</span>
+                    <h2 class="text-4xl md:text-5xl font-black mt-2 mb-12 tracking-tight">CHẶNG ĐƯỜNG<br><span class="text-gradient-3d">PHÁT TRIỂN</span></h2>
+                    
+                    <div class="relative border-l-2 border-slate-700 ml-3 space-y-12 pl-10">
+                        <div class="relative">
+                            <div class="w-5 h-5 bg-orange-500 rounded-full border-4 border-slate-900 shadow-[0_0_10px_#ea580c] absolute -left-[51px] top-1"></div>
+                            <h4 class="text-2xl font-black text-white mb-2">2018 - 2019</h4>
+                            <p class="text-slate-400 text-[15px]">Ra mắt "Đấu trường Sunbot" - sân chơi trí tuệ công nghệ đầu tiên cho trẻ mầm non. Hoàn thiện và triển khai 80 bài học Sunbot, cấu hình Robot (Basic) và phần mềm điều khiển.</p>
+                        </div>
+                        <div class="relative">
+                            <div class="w-5 h-5 bg-orange-500 rounded-full border-4 border-slate-900 shadow-[0_0_10px_#ea580c] absolute -left-[51px] top-1"></div>
+                            <h4 class="text-2xl font-black text-white mb-2">2020 - 2023</h4>
+                            <p class="text-slate-400 text-[15px]">Mở rộng hệ thống vượt bậc. Đạt giải thưởng "Sáng tạo giáo dục của năm". Ra mắt mô hình STEAM Lab hiện đại tích hợp Camera AI, phần mềm quản lý học sinh và chương trình Khoa học tái chế.</p>
+                        </div>
+                        <div class="relative">
+                            <div class="w-5 h-5 bg-orange-500 rounded-full border-4 border-slate-900 shadow-[0_0_10px_#ea580c] absolute -left-[51px] top-1"></div>
+                            <h4 class="text-2xl font-black text-white mb-2">2024 - Đến nay</h4>
+                            <p class="text-slate-400 text-[15px]">Tổ chức thành công Đấu trường Sunbot Quốc gia. Góp mặt trong Sách trắng Edtech VN. Ra mắt hệ sinh thái đồ chơi tự học tại nhà. <strong class="text-orange-400">Xuất sắc lọt Top 50 EdTech Đông Nam Á (Do HolonIQ bình chọn).</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Con số & Giải thưởng -->
+                <div class="flex flex-col gap-8 animate-on-scroll delay-200">
+                    
+                    <!-- Stats Box -->
+                    <div class="bg-slate-800/80 rounded-3xl p-10 text-white shadow-2xl relative overflow-hidden border border-slate-700 backdrop-blur">
+                        <div class="absolute -right-10 -top-10 text-slate-700 opacity-20">
+                            <svg width="200" height="200" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-black uppercase tracking-widest mb-8 relative z-10 border-b border-slate-600 pb-4 text-orange-400">Hiệu Quả Kiểm Chứng</h3>
+                        <div class="grid grid-cols-2 gap-x-6 gap-y-10 relative z-10">
+                            <div>
+                                <p class="text-5xl font-black text-white mb-1 tracking-tighter">300+</p>
+                                <p class="text-[11px] uppercase tracking-widest font-bold text-slate-400">Trường Mầm Non Toàn Quốc</p>
+                            </div>
+                            <div>
+                                <p class="text-5xl font-black text-white mb-1 tracking-tighter">46K+</p>
+                                <p class="text-[11px] uppercase tracking-widest font-bold text-slate-400">Trẻ Em Đã Theo Học</p>
+                            </div>
+                            <div>
+                                <p class="text-5xl font-black text-orange-500 mb-1 tracking-tighter drop-shadow-[0_0_10px_rgba(234,88,12,0.8)]">100%</p>
+                                <p class="text-[11px] uppercase tracking-widest font-bold text-slate-400">Trẻ Yêu Thích Ngay Lần Đầu</p>
+                            </div>
+                            <div>
+                                <p class="text-5xl font-black text-orange-500 mb-1 tracking-tighter drop-shadow-[0_0_10px_rgba(234,88,12,0.8)]">95%</p>
+                                <p class="text-[11px] uppercase tracking-widest font-bold text-slate-400">Tăng Tư Duy Giải Quyết VĐ</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Awards Box -->
+                    <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-3xl p-10 border border-orange-200 shadow-lg">
+                        <h3 class="text-xl font-black text-slate-900 uppercase tracking-widest mb-6 border-b border-orange-200 pb-4">Giải Thưởng Nổi Bật</h3>
+                        <ul class="space-y-5 text-[14px] text-slate-800 font-medium">
+                            <li class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-orange-200 text-orange-600 flex items-center justify-center shrink-0 text-xl font-black">🏆</div>
+                                <span class="pt-1"><strong>SEI Awards (2023):</strong> Sáng tạo giáo dục của năm tại Diễn đàn Công nghệ & CĐS Giáo dục.</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-orange-200 text-orange-600 flex items-center justify-center shrink-0 text-xl font-black">🌟</div>
+                                <span class="pt-1"><strong>Top 50 EdTech ĐNÁ:</strong> Do tổ chức giáo dục toàn cầu HolonIQ đánh giá khách quan và bình chọn.</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-orange-200 text-orange-600 flex items-center justify-center shrink-0 text-xl font-black">⭐</div>
+                                <span class="pt-1"><strong>Industrie 4.0 Awards:</strong> Top DN có sản phẩm số thông minh & Giải pháp CN 4.0.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 06. THƯ VIỆN HÌNH ẢNH (MASONRY GRID) -->
+    <section class="py-24 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <span class="text-orange-600 font-black tracking-widest uppercase text-sm">Khoảnh khắc thực tế</span>
+                <h2 class="text-4xl font-black uppercase tracking-tight mb-4 text-slate-900 mt-2">THƯ VIỆN <span class="text-gradient-3d">SỰ KIỆN</span></h2>
+                <div class="w-24 h-1.5 bg-orange-500 mx-auto rounded-full mb-6"></div>
+            </div>
+
+            <!-- Dùng Unified Media Frame để đồng bộ mọi bức ảnh -->
+            <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6 animate-on-scroll">
+                
+                <div class="break-inside-avoid unified-media-frame hoverable !p-2 group cursor-pointer">
+                    <div class="media-inner h-auto aspect-auto">
+                        <img src="./assets/images/tv-phong-lab.jpg" alt="Lab" onerror="this.src='https://placehold.co/600x800/e2e8f0/64748b?text=Phòng+STEAM+Lab'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                            <p class="text-white font-bold mb-0">Không gian STEAM Lab tiêu chuẩn</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="break-inside-avoid unified-media-frame hoverable !p-2 group cursor-pointer">
+                    <div class="media-inner h-auto aspect-auto">
+                        <img src="./assets/images/tv-bao-chi.jpg" alt="News" onerror="this.src='https://placehold.co/600x400/fdba74/ea580c?text=Báo+Chí'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                            <p class="text-white font-bold mb-0">Báo chí đưa tin ứng dụng Robot mầm non</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="break-inside-avoid unified-media-frame hoverable !p-2 group cursor-pointer">
+                    <div class="media-inner h-auto aspect-auto">
+                        <img src="./assets/images/tv-dau-truong.jpg" alt="Event" onerror="this.src='https://placehold.co/600x900/1e293b/f8fafc?text=Đấu+Trường+Quốc+Gia'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                            <p class="text-white font-bold mb-0">Chung kết Đấu trường Sunbot Toàn quốc</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="break-inside-avoid unified-media-frame hoverable !p-2 group cursor-pointer">
+                    <div class="media-inner h-auto aspect-auto">
+                        <img src="./assets/images/tv-ky-ket.jpg" alt="Sign" onerror="this.src='https://placehold.co/600x500/cbd5e1/475569?text=Lễ+Ký+Kết'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                            <p class="text-white font-bold mb-0">Lễ ký kết Hợp tác chuyên môn IPD</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="break-inside-avoid unified-media-frame hoverable !p-2 group cursor-pointer">
+                    <div class="media-inner h-auto aspect-auto">
+                        <img src="./assets/images/tv-trai-nghiem.jpg" alt="Kids" onerror="this.src='https://placehold.co/600x600/f8fafc/ea580c?text=Học+Sinh+Trải+Nghiệm'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                            <p class="text-white font-bold mb-0">Trẻ hào hứng tương tác cùng Sunbot</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="break-inside-avoid unified-media-frame hoverable !p-2 group cursor-pointer">
+                    <div class="media-inner h-auto aspect-auto">
+                        <img src="./assets/images/tv-giai-thuong.jpg" alt="Award" onerror="this.src='https://placehold.co/600x450/ffedd5/ea580c?text=Giải+Thưởng'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                            <p class="text-white font-bold mb-0">Vinh danh Sáng tạo Giáo dục SEI</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER CHUYÊN NGHIỆP ĐẲNG CẤP -->
+    <footer class="bg-[#0b1120] pt-20 pb-10 border-t-4 border-orange-600 relative overflow-hidden">
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[200px] bg-orange-600 rounded-full blur-[150px] opacity-10 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
+                <!-- Cột 1: Thông tin chung -->
+                <div class="lg:col-span-5">
+                    <img src="./logo-sunbot.png" alt="Sunbot Logo" class="h-14 mb-8 object-contain drop-shadow-[0_0_15px_rgba(234,88,12,0.3)]" onerror="this.src='https://placehold.co/200x60/transparent/ea580c?text=SUNBOT+LOGO'"/>
+                    <p class="text-slate-400 text-[14px] leading-relaxed mb-8 max-w-md">
+                        <strong class="text-white font-black">CÔNG TY CP CÔNG NGHỆ GIÁO DỤC KIRO VIỆT NAM</strong><br><br>
+                        Sứ giả đổi mới giáo dục, tự hào kiến tạo hệ sinh thái giáo dục công nghệ Mầm non thông minh, bền vững và mang đậm bản sắc trí tuệ Việt Nam.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-12 h-12 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:bg-orange-600 hover:border-orange-500 hover:text-white transition-all shadow-md">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.597 0 0 .597 0 1.325v21.351C0 23.403.597 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.597 1.323-1.325V1.325C24 .597 23.403 0 22.675 0z"/></svg>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:bg-orange-600 hover:border-orange-500 hover:text-white transition-all shadow-md">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Cột 2: Văn Phòng -->
+                <div class="lg:col-span-4">
+                    <h4 class="text-white font-black uppercase tracking-widest mb-6 text-sm">Hệ Thống Văn Phòng</h4>
+                    <ul class="space-y-4 text-[14px] text-slate-400">
+                        <li class="flex items-start gap-3">
+                            <span class="text-orange-500 mt-0.5">📍</span> 
+                            <span><strong>Trụ sở:</strong> Số 4 Lý Thường Kiệt, Cửa Nam, Hoàn Kiếm, Hà Nội</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-orange-500 mt-0.5">🏢</span> 
+                            <span><strong>VP Đại diện:</strong> Tầng 11 tháp A, tòa The Light, Tố Hữu, Hà Nội</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-orange-500 mt-0.5">🏢</span> 
+                            <span><strong>Miền Trung:</strong> Số 75 Nguyễn Thị Minh Khai, TP Vinh, Nghệ An</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Cột 3: Liên hệ nhanh -->
+                <div class="lg:col-span-3">
+                    <h4 class="text-white font-black uppercase tracking-widest mb-6 text-sm">Liên Hệ & Hỗ Trợ</h4>
+                    <ul class="space-y-4 text-[14px] text-slate-400">
+                        <li class="flex items-center gap-3">
+                            <span class="text-orange-500">📞</span> <a href="tel:0866109086" class="hover:text-orange-400 transition-colors font-bold text-white">0866 109 086</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-orange-500">✉</span> <a href="mailto:sunbotvietnam@gmail.com" class="hover:text-orange-400 transition-colors">sunbotvietnam@gmail.com</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-orange-500">🌐</span> <a href="https://www.sunbot.vn" target="_blank" class="hover:text-orange-400 transition-colors">www.sunbot.vn</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="text-slate-500 text-xs tracking-widest uppercase font-bold text-center md:text-left">
+                    &copy; 2026 Kiro Vietnam Education Technology JSC. All Rights Reserved.
+                </div>
+                <div class="flex gap-6 text-xs text-slate-500 font-bold uppercase tracking-wider">
+                    <a href="#" class="hover:text-orange-500 transition-colors">Chính sách bảo mật</a>
+                    <a href="#" class="hover:text-orange-500 transition-colors">Điều khoản sử dụng</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCROLL SPY & TAB LOGIC & OBSERVER SCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navbar = document.getElementById('navbar');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+
+                if (window.scrollY > 20) {
+                    navbar.classList.add('shadow-md');
+                    navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                } else {
+                    navbar.classList.remove('shadow-md');
+                    navbar.style.background = 'rgba(255, 255, 255, 0.85)';
+                }
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= (sectionTop - 250)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+                observer.observe(el);
+            });
+        });
+
+        function switchTab(tabId, element) {
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('show');
+            });
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('active');
+            });
+            const targetTab = document.getElementById(tabId);
+            targetTab.classList.remove('hidden');
+            setTimeout(() => targetTab.classList.add('show'), 10);
+            element.classList.add('active');
+        }
+    </script>
+</body>
+</html>

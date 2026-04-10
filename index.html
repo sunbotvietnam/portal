@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunbot Education Portal | Cổng Thông Tin Dành Cho Đối Tác</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #ea580c, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .portal-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portal-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: transparent;
+            transition: all 0.4s ease;
+        }
+
+        .portal-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            border-color: #cbd5e1;
+        }
+
+        .portal-card:hover::before {
+            background: linear-gradient(to right, #ea580c, #fb923c);
+        }
+
+        .icon-wrapper {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f1f5f9;
+            color: #475569;
+            transition: all 0.4s ease;
+        }
+
+        .portal-card:hover .icon-wrapper {
+            background: #fff7ed;
+            color: #ea580c;
+        }
+
+        .hero-pattern {
+            background-color: #0f172a;
+            background-image: radial-gradient(circle at 20% 150%, rgba(234, 88, 12, 0.15) 0%, transparent 50%), 
+                              radial-gradient(circle at 80% -50%, rgba(56, 189, 248, 0.1) 0%, transparent 50%);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- HEADER / HERO SECTION -->
+    <header class="hero-pattern pt-16 pb-24 px-6 relative border-b-4 border-orange-600">
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <!-- Logo -->
+            <div class="flex justify-center mb-8">
+                <div class="bg-white px-6 py-3 rounded-2xl shadow-lg">
+                    <img src="./assets/img/logo-sunbot.png" alt="Sunbot Logo" class="h-10 object-contain" onerror="this.src='https://placehold.co/200x60/ea580c/white?text=SUNBOT+LOGO'">
+                </div>
+            </div>
+            
+            <h1 class="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">
+                Cổng Thông Tin <span class="gradient-text">Đối Tác Trường Học</span>
+            </h1>
+            <p class="text-slate-300 text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed">
+                Khám phá hệ sinh thái giáo dục công nghệ mầm non và tìm kiếm giải pháp triển khai giáo dục Steam tối ưu cho Nhà trường
+            </p>
+        </div>
+    </header>
+
+    <!-- MAIN NAVIGATION CARDS -->
+    <main class="flex-grow max-w-5xl mx-auto px-6 w-full -mt-10 relative z-20 mb-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- Card 1: Proposal -->
+            <a href="./school/proposal/" class="portal-card p-8 group block outline-none">
+                <div class="flex items-start justify-between mb-6">
+                    <div class="icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-300 group-hover:text-orange-500 group-hover:bg-orange-50 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-2">Đề Xuất Cho Nhà Trường</h3>
+                <p class="text-slate-500 text-sm leading-relaxed mb-6">Tài liệu chi tiết về chương trình học, lộ trình triển khai và phân tích so sánh 3 gói hợp tác (Basic, Standard, Premium).</p>
+                <span class="text-sm font-bold text-slate-400 group-hover:text-orange-600 transition-colors uppercase tracking-widest">Xem đề xuất ➔</span>
+            </a>
+
+            <!-- Card 2: Profile -->
+            <a href="./school/profile/" class="portal-card p-8 group block outline-none">
+                <div class="flex items-start justify-between mb-6">
+                    <div class="icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-300 group-hover:text-orange-500 group-hover:bg-orange-50 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-2">Hồ Sơ Năng Lực (Profile)</h3>
+                <p class="text-slate-500 text-sm leading-relaxed mb-6">Khám phá câu chuyện thương hiệu, đội ngũ chuyên gia, thành tựu giải thưởng và thư viện hình ảnh thực tế của Sunbot.</p>
+                <span class="text-sm font-bold text-slate-400 group-hover:text-orange-600 transition-colors uppercase tracking-widest">Xem hồ sơ ➔</span>
+            </a>
+
+            <!-- Card 3: Calculator -->
+            <a href="./school/calculator/" class="portal-card p-8 group block outline-none">
+                <div class="flex items-start justify-between mb-6">
+                    <div class="icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16.01" y1="10" y2="10"/><line x1="12" x2="12.01" y1="10" y2="10"/><line x1="8" x2="8.01" y1="10" y2="10"/><line x1="8" x2="8.01" y1="14" y2="14"/><line x1="12" x2="12.01" y1="14" y2="14"/><line x1="16" x2="16.01" y1="14" y2="14"/><line x1="8" x2="8.01" y1="18" y2="18"/><line x1="12" x2="12.01" y1="18" y2="18"/><line x1="16" x2="16.01" y1="18" y2="18"/></svg>
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-300 group-hover:text-orange-500 group-hover:bg-orange-50 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-2">Tính Mô Hình Triển Khai</h3>
+                <p class="text-slate-500 text-sm leading-relaxed mb-6">Công cụ dự toán thông minh giúp nhà trường tính toán sơ bộ chi phí và gợi ý gói đầu tư phù hợp với quy mô thực tế.</p>
+                <span class="text-sm font-bold text-slate-400 group-hover:text-orange-600 transition-colors uppercase tracking-widest">Tính dự toán ➔</span>
+            </a>
+
+            <!-- Card 4: Booking -->
+            <a href="https://zalo.me/0866109086" target="_blank" rel="noopener noreferrer" class="portal-card p-8 group block outline-none">
+                <div class="flex items-start justify-between mb-6">
+                    <div class="icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-300 group-hover:text-orange-500 group-hover:bg-orange-50 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-2">Đặt Lịch Trao Đổi</h3>
+                <p class="text-slate-500 text-sm leading-relaxed mb-6">Kết nối trực tiếp với chuyên gia của chúng tôi để được giải đáp thắc mắc và nhận tư vấn chiến lược chuyên sâu.</p>
+                <span class="text-sm font-bold text-slate-400 group-hover:text-orange-600 transition-colors uppercase tracking-widest">Liên hệ ngay ➔</span>
+            </a>
+        </div>
+    </main>
+
+    <!-- WHY SUNBOT SECTION -->
+    <section class="bg-white py-16 border-t border-slate-200">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-2xl font-black text-slate-900 text-center mb-10 uppercase tracking-wide">Vì sao chọn Sunbot?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div>
+                    <div class="w-12 h-12 mx-auto rounded-full bg-orange-100 text-orange-600 flex items-center justify-center mb-4 font-bold text-lg">1</div>
+                    <h4 class="font-bold text-slate-800 mb-2">Chương trình chuẩn hóa</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">Không chỉ là thiết bị, chúng tôi cung cấp hệ thống học liệu và giáo án chuyên nghiệp.</p>
+                </div>
+                <div>
+                    <div class="w-12 h-12 mx-auto rounded-full bg-orange-100 text-orange-600 flex items-center justify-center mb-4 font-bold text-lg">2</div>
+                    <h4 class="font-bold text-slate-800 mb-2">Dễ dàng vận hành</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">Đào tạo giáo viên bài bản, đảm bảo nhà trường có thể tự chủ vận hành lâu dài.</p>
+                </div>
+                <div>
+                    <div class="w-12 h-12 mx-auto rounded-full bg-orange-100 text-orange-600 flex items-center justify-center mb-4 font-bold text-lg">3</div>
+                    <h4 class="font-bold text-slate-800 mb-2">Mô hình sinh lời</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">Tạo điểm nhấn tuyển sinh, giữ chân học sinh và xây dựng dòng tiền bền vững.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center text-sm">
+        <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p>&copy; 2026 Kiro Vietnam Education Technology JSC.</p>
+            <div class="flex items-center gap-6 text-xs uppercase tracking-widest font-bold">
+                <a href="#" class="hover:text-white transition-colors">Website</a>
+                <a href="#" class="hover:text-white transition-colors">Hotline: 0866 109 086</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
