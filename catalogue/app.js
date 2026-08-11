@@ -1,0 +1,51 @@
+(function(){
+const params=new URLSearchParams(location.search);
+const audience=params.get('audience')||'common';
+const guided=params.get('guided')==='1'&&audience!=='common';
+const school=params.get('school')||'';
+const source=params.get('source')||'';
+const body=document.body;
+body.dataset.audience=audience;
+body.classList.add('aud-'+audience);
+
+const config={
+  common:{label:'Catalogue chung',title:'Mỗi nhà trường cần một cách triển khai khác nhau.',lead:'Sunbot không đưa một phương án cố định cho mọi trường. Mô hình được lựa chọn theo mục tiêu giáo dục, quy mô, đội ngũ giáo viên, cơ sở vật chất, khả năng đầu tư và mức độ chủ động mà nhà trường mong muốn.',guidedTitle:'Bắt đầu từ câu hỏi của nhà trường, không phải từ danh sách sản phẩm.',guidedLead:'Ba hướng dưới đây giúp thu hẹp lựa chọn trước khi đọc chi tiết tám mô hình.',recommended:[1,2,3],cards:[['Muốn triển khai nhanh','Xem mô hình Sunbot trực tiếp tổ chức giảng dạy để bắt đầu nhanh hoặc thử nhu cầu.',1],['Muốn trường chủ động dần','Xem đào tạo giáo viên và chuyển giao có kiểm soát để xây năng lực nội bộ.',2],['Muốn mở rộng quy mô','Xem mô hình cụm/hệ thống khi cần chuẩn hóa nhiều điểm triển khai.',8]]},
+  public:{label:'Dành cho trường mầm non công lập',title:'Các cách triển khai phù hợp với điều kiện của trường mầm non công lập.',lead:'Ưu tiên của trường công thường nằm ở tính phù hợp chuyên môn, năng lực giáo viên, quản lý nhiều điểm trường, nguồn lực đầu tư và cơ chế triển khai tại địa phương. Catalogue này giúp nhà trường xem trước các phương án thường phù hợp nhất.',guidedTitle:'Với trường công lập, nên xem trước các hướng tăng tính chủ động và quản lý được lâu dài.',guidedLead:'Có thể bắt đầu nhỏ, nhưng mô hình dài hạn nên giảm phụ thuộc vào giáo viên bên ngoài và phù hợp với nguồn lực thực tế của nhà trường.',recommended:[2,3,4,5,8],cards:[['Xây năng lực giáo viên','Đào tạo giáo viên nhà trường là hướng nên xem trước nếu trường muốn chủ động nhân sự và tích hợp vào hoạt động chung.',2],['Đầu tư không gian có kiểm soát','Corner phù hợp để bắt đầu gọn; Lab phù hợp khi có nguồn đầu tư và tần suất sử dụng đủ lớn.',4],['Nhiều điểm trường / sau sáp nhập','Mô hình cụm hoặc hệ thống giúp chuẩn hóa chương trình, đào tạo, thiết bị và báo cáo trên nhiều điểm.',8]]},
+  private:{label:'Dành cho trường mầm non tư thục',title:'Các cách triển khai giúp trường tư tạo khác biệt nhưng vẫn vận hành bền vững.',lead:'Trường tư cần cân bằng giá trị giáo dục, trải nghiệm phụ huynh, tuyển sinh, năng lực giáo viên và hiệu quả đầu tư. Có thể triển khai nhanh trước, sau đó chuyển dần sang mô hình nhà trường chủ động hơn.',guidedTitle:'Với trường tư, nên chọn mô hình theo mục tiêu: triển khai nhanh, xây năng lực hay tạo điểm nhấn tuyển sinh.',guidedLead:'Camp, Day, Corner hoặc mô hình Sunbot trực tiếp có thể mở đầu; đào tạo và chuyển giao giúp giảm phụ thuộc khi chương trình đã chứng minh hiệu quả.',recommended:[1,2,3,4,5,6,7],cards:[['Muốn triển khai nhanh','Sunbot trực tiếp tổ chức giảng dạy phù hợp khi trường chưa có giáo viên hoặc muốn thử nhu cầu trước.',1],['Muốn giáo viên trường làm chủ','Đào tạo giáo viên và chuyển giao có kiểm soát tạo năng lực vận hành dài hạn.',2],['Muốn tạo điểm nhấn tuyển sinh','Camp, Day, Corner hoặc Lab có thể tạo trải nghiệm rõ ràng cho phụ huynh khi được gắn với chương trình thật.',6]]},
+  system:{label:'Dành cho hệ thống trường',title:'Các cách triển khai để nhiều cơ sở cùng một chuẩn nhưng vẫn vận hành được tại chỗ.',lead:'Hệ thống cần chuẩn hóa chương trình, đào tạo, quyền sử dụng, thiết bị, dữ liệu và báo cáo. Mục tiêu không chỉ là nhân rộng số cơ sở mà là giữ được chất lượng khi quy mô tăng.',guidedTitle:'Với hệ thống trường, nên xem trước các mô hình có khả năng chuẩn hóa và nhân rộng.',guidedLead:'Đào tạo, chuyển giao và mô hình cụm/hệ thống là trục chính; Corner/Lab là lớp đầu tư không gian có thể chuẩn hóa theo từng cơ sở.',recommended:[2,3,5,8],cards:[['Chuẩn hóa giáo viên','Đào tạo theo một chuẩn chung giúp các cơ sở có cùng cách tổ chức và đánh giá.',2],['Chuẩn hóa quyền sử dụng','Chuyển giao có kiểm soát làm rõ phạm vi chương trình, giáo viên, thương hiệu và hỗ trợ.',3],['Quản trị đa cơ sở','Mô hình cụm/hệ thống phân vai rõ giữa Kiro/Sunbot, đầu mối điều phối và từng trường.',8]]}
+};
+const d=config[audience]||config.common;
+
+if(guided){
+  document.querySelector('#audience-chip').hidden=false;
+  document.querySelector('#audience-chip').textContent=school?`${d.label} · ${school}`:d.label;
+}
+document.querySelector('#hero-title').textContent=d.title;
+document.querySelector('#hero-lead').textContent=d.lead;
+document.querySelector('#guided-title').textContent=d.guidedTitle;
+document.querySelector('#guided-lead').textContent=d.guidedLead;
+document.querySelector('#nav-subtitle').textContent=guided?d.label:'Nhiều cách triển khai – một chuẩn chuyên môn thống nhất';
+
+document.querySelector('#guided-grid').innerHTML=d.cards.map(c=>`<article class="guided-card"><strong>${escapeHtml(c[0])}</strong><p>${escapeHtml(c[1])}</p><a href="#m${c[2]}">Xem mô hình phù hợp →</a></article>`).join('');
+
+d.recommended.forEach(id=>{
+  document.querySelectorAll(`[data-model="${id}"]`).forEach(el=>el.classList.add('recommended'));
+  const detail=document.querySelector(`[data-model-detail="${id}"]`);if(detail)detail.classList.add('recommended-detail');
+  const row=document.querySelector(`[data-row-model="${id}"]`);if(row)row.classList.add('recommended-row');
+});
+
+const backParams=new URLSearchParams();
+if(audience!=='common')backParams.set('audience',audience);
+if(guided)backParams.set('guided','1');
+if(school)backParams.set('school',school);
+if(source)backParams.set('source',source);
+const backUrl='../profile-v2/'+(backParams.toString()?'?'+backParams.toString():'');
+['profile-back','profile-back-top','profile-back-bottom'].forEach(id=>{const el=document.getElementById(id);if(el)el.href=backUrl});
+
+if(guided){
+  const first=d.recommended[0];
+  const detail=document.querySelector(`[data-model-detail="${first}"]`);if(detail)detail.open=true;
+}
+
+function escapeHtml(s){return String(s).replace(/[&<>'\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[c]))}
+})();
