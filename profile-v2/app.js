@@ -22,7 +22,7 @@ document.querySelectorAll('[data-audience-link]').forEach(el=>{
 
 const values=document.querySelector('#audience-values');
 if(values){
-  const notes=['Ưu tiên trong cấu hình này.','Được phản ánh trong chương trình và trải nghiệm.','Có thể điều chỉnh theo nguồn lực thực tế.','Được kiểm chứng trước khi mở rộng.'];
+  const notes=['Điểm cần ưu tiên trong phương án này.','Được thể hiện trong chương trình và cách triển khai.','Có thể điều chỉnh theo nguồn lực thực tế.','Nên được thử và đánh giá trước khi mở rộng.'];
   values.innerHTML=d.values.map((v,i)=>`<div class="value fade-up"><strong>${escapeHtml(v)}</strong><span>${notes[i]}</span></div>`).join('');
 }
 
@@ -35,11 +35,26 @@ renderCards('#audience-school-values',d.schoolValues);
 
 const models=document.querySelector('#audience-models');
 if(models&&d.models){
-  models.innerHTML=d.models.map((x,i)=>`<details class="disclosure fade-up" ${i===0?'open':''}><summary><span><span class="model-tag">Mô hình ${String(i+1).padStart(2,'0')}</span><br>${escapeHtml(x[0])}</span></summary><div class="detail-body">${escapeHtml(x[1])}</div></details>`).join('');
+  models.innerHTML=d.models.map((x,i)=>`<details class="disclosure fade-up" ${i===0?'open':''}><summary><span><span class="model-tag">Phương án ${String(i+1).padStart(2,'0')}</span><br>${escapeHtml(x[0])}</span></summary><div class="detail-body">${escapeHtml(x[1])}</div></details>`).join('');
   models.querySelectorAll('details').forEach((el,i)=>el.addEventListener('toggle',()=>{if(el.open)track('model_expand',{index:i+1,label:el.querySelector('summary').textContent.trim()})}));
 }
 
-if(school){const e=document.querySelector('#personalized');if(e){e.hidden=false;e.innerHTML=`Hồ sơ được mở cho <strong>${escapeHtml(school)}</strong>${source?` · nguồn: ${escapeHtml(source)}`:''}.`}}
+if(school){const e=document.querySelector('#personalized');if(e){e.hidden=false;e.innerHTML=`Hồ sơ được chuẩn bị cho <strong>${escapeHtml(school)}</strong>${source?` · người gửi: ${escapeHtml(source)}`:''}.`}}
+
+const nextActions=document.querySelector('#next .actions');
+if(nextActions){
+  const catalogue=document.createElement('a');
+  catalogue.className='btn primary';
+  catalogue.href='../catalogue/';
+  const cq=new URLSearchParams();
+  if(a!=='common')cq.set('audience',a);
+  if(school)cq.set('school',school);
+  if(source)cq.set('source',source);
+  if(cq.toString())catalogue.href+='?'+cq.toString();
+  catalogue.dataset.track='open_catalogue';
+  catalogue.innerHTML='Xem các mô hình hợp tác <span class="arrow">→</span>';
+  nextActions.prepend(catalogue);
+}
 
 function track(name,extra={}){
   const evt={name,audience:a,school:school||'',source:source||'',ts:new Date().toISOString(),path:location.pathname,...extra};
