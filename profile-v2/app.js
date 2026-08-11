@@ -5,17 +5,29 @@ const d=window.SUNBOT_PROFILE[a]||window.SUNBOT_PROFILE.common;
 const params=new URLSearchParams(location.search);
 const school=params.get('school');
 const source=params.get('source');
+const guided=params.get('guided')==='1'&&a!=='common';
 body.classList.add('aud-'+a);
+if(guided){
+  body.classList.add('guided');
+  const s=document.createElement('style');
+  s.textContent='.guided .audience-switch,.guided .mobile-audience{display:none!important}.guided .brand-copy strong{color:var(--accent)}.guided .brand-copy span{color:#667085}.guided .nav-in{justify-content:space-between}.guided .brand{min-width:auto}.guided .nav:after{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--accent),transparent 75%)}';
+  document.head.appendChild(s);
+  const strong=document.querySelector('.brand-copy strong');
+  const small=document.querySelector('.brand-copy span');
+  if(strong)strong.textContent=d.label||'Hồ sơ Sunbot';
+  if(small)small.textContent='Hồ sơ dành cho nhóm trường này';
+}
 
 document.querySelectorAll('[data-copy]').forEach(el=>{const k=el.dataset.copy;if(d[k])el.textContent=d[k]});
 
 document.querySelectorAll('[data-audience-link]').forEach(el=>{
   const target=el.dataset.audienceLink;
   if(target===a)el.classList.add('active');
-  if(school||source){
+  if(school||source||guided){
     const url=new URL(el.href,location.href);
     if(school)url.searchParams.set('school',school);
     if(source)url.searchParams.set('source',source);
+    if(guided&&target!=='common')url.searchParams.set('guided','1');
     el.href=url.pathname+url.search;
   }
 });
@@ -48,16 +60,21 @@ if(nextActions){
   catalogue.href='../catalogue/';
   const cq=new URLSearchParams();
   if(a!=='common')cq.set('audience',a);
+  if(guided)cq.set('guided','1');
   if(school)cq.set('school',school);
   if(source)cq.set('source',source);
   if(cq.toString())catalogue.href+='?'+cq.toString();
   catalogue.dataset.track='open_catalogue';
-  catalogue.innerHTML='Xem các mô hình hợp tác <span class="arrow">→</span>';
+  catalogue.innerHTML=guided?'Xem phương án phù hợp <span class="arrow">→</span>':'Xem các mô hình hợp tác <span class="arrow">→</span>';
   nextActions.prepend(catalogue);
+  if(guided){
+    const legacy=nextActions.querySelector('[data-track="legacy_profile"]');
+    if(legacy)legacy.remove();
+  }
 }
 
 function track(name,extra={}){
-  const evt={name,audience:a,school:school||'',source:source||'',ts:new Date().toISOString(),path:location.pathname,...extra};
+  const evt={name,audience:a,guided,school:school||'',source:source||'',ts:new Date().toISOString(),path:location.pathname,...extra};
   const q=JSON.parse(localStorage.getItem('sunbot_profile_events')||'[]');q.push(evt);localStorage.setItem('sunbot_profile_events',JSON.stringify(q.slice(-200)));
   window.dispatchEvent(new CustomEvent('sunbot-profile-event',{detail:evt}));
 }
@@ -73,5 +90,5 @@ if('IntersectionObserver'in window){
   document.querySelectorAll('.fade-up,.card,.layer,.proof').forEach(el=>{el.classList.add('fade-up');revealObserver.observe(el)});
 }else document.querySelectorAll('.fade-up').forEach(el=>el.classList.add('visible'));
 
-function escapeHtml(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+function escapeHtml(s){return String(s).replace(/[&<>'\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[c]))}
 })();
