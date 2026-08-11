@@ -34,13 +34,27 @@ d.recommended.forEach(id=>{
   const row=document.querySelector(`[data-row-model="${id}"]`);if(row)row.classList.add('recommended-row');
 });
 
-const backParams=new URLSearchParams();
-if(audience!=='common')backParams.set('audience',audience);
-if(guided)backParams.set('guided','1');
-if(school)backParams.set('school',school);
-if(source)backParams.set('source',source);
-const backUrl='../profile-v2/'+(backParams.toString()?'?'+backParams.toString():'');
+const contextParams=new URLSearchParams();
+if(audience!=='common')contextParams.set('audience',audience);
+if(guided)contextParams.set('guided','1');
+if(school)contextParams.set('school',school);
+if(source)contextParams.set('source',source);
+const suffix=contextParams.toString()?'?'+contextParams.toString():'';
+const backUrl='../profile-v2/'+suffix;
 ['profile-back','profile-back-top','profile-back-bottom'].forEach(id=>{const el=document.getElementById(id);if(el)el.href=backUrl});
+
+const surveyUrl='../survey/'+suffix;
+const actionAreas=[...document.querySelectorAll('.dark .actions')];
+actionAreas.forEach(area=>{
+  if(area.querySelector('[data-survey-link]'))return;
+  const link=document.createElement('a');
+  link.className='btn primary';
+  link.href=surveyUrl;
+  link.dataset.surveyLink='1';
+  link.textContent=guided?'Trao đổi nhu cầu của nhà trường →':'Điền phiếu nhu cầu →';
+  area.prepend(link);
+});
+const surveyLinks=[...document.querySelectorAll('a[href*="survey"],a[data-survey-link]')];surveyLinks.forEach(x=>x.href=surveyUrl);
 
 if(guided){
   const first=d.recommended[0];
