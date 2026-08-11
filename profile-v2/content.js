@@ -1,142 +1,142 @@
 window.SUNBOT_PROFILE={
 common:{
-label:'Hồ sơ chung',
-eyebrow:'Giải pháp giáo dục công nghệ mầm non',
-title:'Giáo dục công nghệ từ chương trình đến vận hành',
-lead:'Sunbot kết hợp chương trình, robot, sa bàn, học liệu, đào tạo giáo viên, vận hành, quan sát – đánh giá và kiểm soát chất lượng để giúp nhà trường triển khai Robotics và STEAM bài bản, phù hợp lứa tuổi.',
-insightTitle:'Một giải pháp hoàn chỉnh phải bắt đầu từ trẻ và vận hành được trong nhà trường',
-insight:'Sunbot không đặt robot hay thiết bị làm trung tâm. Trọng tâm là quá trình trẻ quan sát, suy nghĩ, thử nghiệm, phát hiện lỗi, hợp tác và diễn đạt; đồng thời nhà trường phải có chương trình, giáo viên, thiết bị, quy trình và cơ chế kiểm soát đủ rõ để duy trì lâu dài.',
-values:['Phù hợp lứa tuổi','Chương trình có lộ trình','Giáo viên được hỗ trợ','Vận hành có kiểm soát'],
-problemTitle:'Vì sao nhà trường cần một giải pháp hoàn chỉnh?',
-problemLead:'Thực tế triển khai giáo dục công nghệ thường không vướng ở một thiết bị hay một giáo án riêng lẻ, mà ở việc các thành phần không nối được với nhau.',
+label:'Hồ sơ giới thiệu Sunbot',
+eyebrow:'Giải pháp giáo dục công nghệ dành cho trẻ mầm non',
+title:'Từ chương trình đến vận hành, cùng nhà trường tổ chức giáo dục công nghệ một cách bài bản.',
+lead:'Sunbot kết hợp chương trình Robotics và STEAM, robot, sa bàn, học liệu, đào tạo giáo viên, quy trình tổ chức lớp và hệ thống quan sát – đánh giá để nhà trường có thể triển khai phù hợp với lứa tuổi và duy trì ổn định trong thực tế.',
+insightTitle:'Điều quan trọng không phải là có thêm một bộ robot, mà là trẻ học được gì và nhà trường có vận hành được lâu dài hay không.',
+insight:'Sunbot được xây dựng từ chính hai câu hỏi đó. Trẻ cần được quan sát, suy nghĩ, thử nghiệm, phát hiện lỗi, hợp tác và diễn đạt; còn nhà trường cần có chương trình, giáo viên, thiết bị, học liệu, quy trình và cách kiểm soát chất lượng đủ rõ.',
+values:['Phù hợp với trẻ mầm non','Có lộ trình theo độ tuổi','Giáo viên được hỗ trợ','Nhà trường dễ kiểm soát'],
+problemTitle:'Vì sao chỉ có thiết bị hoặc giáo án là chưa đủ?',
+problemLead:'Khi các thành phần không đi cùng nhau, một chương trình công nghệ rất dễ trở thành vài tiết trải nghiệm rời rạc hoặc tạo thêm áp lực cho giáo viên và nhà trường.',
 problems:[
-['Chuyên môn','Có thiết bị nhưng thiếu lộ trình theo độ tuổi; hoạt động dễ thiên về trình diễn robot hoặc chế tạo thủ công.'],
-['Giáo viên','Có giáo án nhưng giáo viên chưa đủ thời gian, năng lực hoặc hỗ trợ để triển khai ổn định.'],
-['Vận hành','Lịch học, thiết bị, học liệu, nghỉ – dạy bù và báo cáo có thể trở thành gánh nặng nếu thiếu quy trình.'],
-['Minh chứng','Nhà trường và phụ huynh cần nhìn thấy trẻ học và phát triển gì, không chỉ nhận ảnh hoạt động.']
+['Chương trình','Nội dung cần có lộ trình rõ theo độ tuổi, thay vì chỉ dừng ở việc điều khiển robot hoặc làm một sản phẩm.'],
+['Giáo viên','Giáo viên cần được hướng dẫn, thực hành và hỗ trợ sau đào tạo để có thể tổ chức lớp ổn định.'],
+['Vận hành','Lịch học, thiết bị, học liệu, nghỉ – dạy bù và xử lý sự cố cần có quy trình rõ ngay từ đầu.'],
+['Theo dõi kết quả','Nhà trường và phụ huynh cần hiểu trẻ đang học và phát triển điều gì, không chỉ nhìn thấy ảnh hoạt động.']
 ],
-schoolValueTitle:'Sunbot nối chuyên môn, giáo viên, vận hành và dữ liệu thành một hệ thống',
-schoolValueLead:'Nhà trường có thể lựa chọn Sunbot trực tiếp vận hành, đào tạo giáo viên trường, chuyển giao có kiểm soát hoặc đầu tư không gian phù hợp; không cần bắt đầu bằng cấu hình lớn.',
+schoolValueTitle:'Sunbot cung cấp trọn các thành phần cần thiết để nhà trường lựa chọn và tổ chức theo điều kiện thực tế.',
+schoolValueLead:'Tùy nguồn lực, nhà trường có thể để Sunbot trực tiếp triển khai, đào tạo giáo viên trường, chuyển giao chương trình hoặc đầu tư không gian phù hợp. Không nhất thiết phải bắt đầu từ một cấu hình lớn.',
 schoolValues:[
-['Chương trình','Lộ trình theo độ tuổi, giáo án, nhiệm vụ, mục tiêu và tài liệu hướng dẫn.'],
+['Chương trình','Khung chương trình, giáo án, nhiệm vụ và lộ trình theo độ tuổi.'],
 ['Thiết bị & học liệu','Robot Sunbot, sa bàn, thẻ lệnh, học cụ Robotics và học liệu STEAM theo cấu hình.'],
-['Đào tạo & vận hành','Đào tạo, thực hành lớp, đánh giá giáo viên, lịch học, thiết bị, học liệu và sự cố.'],
-['Quan sát & QC','Nhật ký, báo cáo, đánh giá theo quá trình, phản hồi nhà trường và kiểm soát chất lượng.']
+['Đào tạo & vận hành','Đào tạo giáo viên, thực hành lớp, hỗ trợ triển khai, quản lý lịch học, thiết bị và học liệu.'],
+['Quan sát & chất lượng','Nhật ký, báo cáo, ghi nhận quá trình học của trẻ và kiểm tra chất lượng định kỳ.']
 ],
-modelsTitle:'Nhiều mô hình triển khai, một chuẩn chuyên môn',
-modelsLead:'Sunbot thiết kế phương án theo mục tiêu, quy mô, giáo viên, không gian và khả năng đầu tư của từng nhà trường.',
+modelsTitle:'Mỗi trường có thể bắt đầu theo một cách khác nhau.',
+modelsLead:'Sunbot cùng nhà trường lựa chọn mô hình dựa trên mục tiêu, số trẻ, đội ngũ giáo viên, không gian và mức độ chủ động mong muốn.',
 models:[
-['Sunbot trực tiếp giảng dạy','Phù hợp khi cần triển khai nhanh hoặc kiểm chứng nhu cầu trước.'],
-['Giáo viên trường triển khai','Sunbot đào tạo và hỗ trợ để nhà trường tăng tính chủ động.'],
-['Chuyển giao có kiểm soát','Quyền sử dụng, cập nhật, đào tạo và QC được xác định rõ.'],
-['Corner / Lab / Camp / Day','Có thể bắt đầu từ không gian gọn hoặc chương trình ngắn trước khi mở rộng.']
+['Sunbot trực tiếp giảng dạy','Phù hợp khi nhà trường muốn triển khai nhanh hoặc thử nghiệm trước.'],
+['Giáo viên nhà trường triển khai','Sunbot đào tạo và đồng hành để đội ngũ của trường từng bước chủ động.'],
+['Chuyển giao có kiểm soát','Nhà trường sử dụng chương trình trong phạm vi thỏa thuận, có cập nhật và kiểm tra chất lượng.'],
+['Corner / Lab / Camp / Day','Có thể bắt đầu từ một góc trải nghiệm, chương trình ngắn hoặc sự kiện rồi mới mở rộng.']
 ],
-cta:'Trao đổi nhu cầu với Sunbot',
-nextLead:'Bước tiếp theo là hiểu điều kiện thực tế của nhà trường, chọn mô hình phù hợp rồi mới xây phương án và báo giá riêng.'
+cta:'Cùng Sunbot tìm phương án phù hợp cho nhà trường',
+nextLead:'Sau khi hiểu nhu cầu và điều kiện thực tế, Sunbot mới đề xuất cấu hình triển khai và báo giá phù hợp.'
 },
 public:{
-label:'Public School',
-eyebrow:'Sunbot for Public School',
-title:'Chuyên môn rõ. Vận hành gọn. Linh hoạt theo điều kiện nhà trường.',
-lead:'Phiên bản dành cho trường mầm non công lập, ưu tiên tính phù hợp chuyên môn, an toàn, quản trị, nhiều điểm trường và mô hình triển khai có thể điều chỉnh theo pháp nhân, nguồn lực và điều kiện địa phương.',
-insightTitle:'Trường công cần một giải pháp kiểm soát được, không phải thêm một đầu việc khó quản lý',
-insight:'Khi tổ chức trường, điểm trường, nhân sự và cơ chế triển khai thay đổi, giáo dục công nghệ phải đủ linh hoạt để bắt đầu ở quy mô phù hợp, xác định rõ trách nhiệm, hỗ trợ giáo viên và cho phép Ban Giám hiệu theo dõi chất lượng giữa nhiều lớp hoặc nhiều điểm.',
-values:['Chuyên môn & an toàn','Đào tạo giáo viên','Quản lý nhiều điểm','Báo cáo & kiểm soát'],
-problemTitle:'Bài toán của trường mầm non công lập không chỉ là “có hay không có Robotics”',
-problemLead:'Nhà trường phải đồng thời bảo đảm chuyên môn, giảm tải cho giáo viên, quản lý thiết bị – lịch học và lựa chọn cơ chế triển khai phù hợp với điều kiện địa phương.',
+label:'Dành cho trường mầm non công lập',
+eyebrow:'Giải pháp Sunbot cho trường công lập',
+title:'Phù hợp chuyên môn, dễ kiểm soát và linh hoạt theo điều kiện của từng nhà trường.',
+lead:'Sunbot hỗ trợ trường mầm non công lập triển khai giáo dục công nghệ theo hướng bài bản, an toàn, rõ trách nhiệm và có thể điều chỉnh theo số điểm trường, đội ngũ giáo viên, cơ sở vật chất và điều kiện của địa phương.',
+insightTitle:'Một giải pháp tốt cho trường công phải giúp nhà trường quản lý được, chứ không tạo thêm một đầu việc khó kiểm soát.',
+insight:'Nhà trường có thể đang có nhiều điểm trường, giáo viên đã nhiều nhiệm vụ, cơ sở vật chất không đồng đều và cơ chế triển khai khác nhau giữa từng địa phương. Vì vậy Sunbot không áp dụng một cách làm duy nhất, mà thiết kế phương án theo từng bối cảnh cụ thể.',
+values:['Phù hợp chuyên môn & an toàn','Hỗ trợ giáo viên','Quản lý được nhiều điểm trường','Báo cáo rõ cho Ban Giám hiệu'],
+problemTitle:'Bài toán không chỉ là có hay không có Robotics.',
+problemLead:'Điều cần giải quyết là làm thế nào để chương trình phù hợp với trẻ, giáo viên có thể triển khai, thiết bị được quản lý tốt và nhà trường vẫn kiểm soát được toàn bộ hoạt động.',
 problems:[
-['Chuyên môn','Chương trình phải được thiết kế cho mầm non, có lộ trình và tránh biến thành thao tác robot hoặc hoạt động thủ công rời rạc.'],
-['Giáo viên','Giáo viên đã có nhiều nhiệm vụ; giải pháp cần đào tạo, dạy mẫu, hỗ trợ và tái đào tạo thay vì chỉ giao giáo án.'],
-['Nhiều điểm trường','Thiết bị, giáo viên, học liệu và báo cáo cần có thể điều phối theo trường chính, phân hiệu hoặc điểm trường.'],
-['Thủ tục & nguồn lực','Sunbot không mặc định mô hình thu phí; phương án phải phù hợp quy định, chủ trương, nguồn đầu tư hoặc tài trợ hợp pháp tại địa phương.']
+['Chuyên môn','Nội dung cần được thiết kế riêng cho mầm non, có lộ trình và tránh biến thành thao tác robot hoặc hoạt động thủ công rời rạc.'],
+['Giáo viên','Giáo viên đã có nhiều nhiệm vụ nên cần được đào tạo, dạy mẫu và hỗ trợ thực tế, không chỉ nhận tài liệu.'],
+['Nhiều điểm trường','Thiết bị, giáo viên, học liệu và lịch học cần có thể bố trí, luân chuyển và theo dõi theo từng điểm.'],
+['Cơ chế triển khai','Sunbot không mặc định trường phải tổ chức lớp thu phí. Phương án được xây theo quy định, chủ trương và nguồn lực thực tế của địa phương, nhà trường.']
 ],
-schoolValueTitle:'Sunbot giúp Ban Giám hiệu nhìn được cả lớp học lẫn hệ thống vận hành',
-schoolValueLead:'Mỗi cấu hình được xây theo nguyên tắc phù hợp lứa tuổi, an toàn, rõ trách nhiệm, minh bạch và hạn chế phát sinh thêm thủ tục hoặc báo cáo thủ công không cần thiết.',
+schoolValueTitle:'Sunbot giúp Ban Giám hiệu nhìn được cả chất lượng lớp học và cách chương trình đang được vận hành.',
+schoolValueLead:'Phương án được thiết kế để rõ trách nhiệm, giảm báo cáo thủ công, bảo đảm an toàn và có thể theo dõi theo từng lớp, từng điểm trường.',
 schoolValues:[
 ['Hồ sơ chuyên môn','Khung chương trình, giáo án, nhiệm vụ, hướng dẫn tổ chức lớp và tiêu chí quan sát trẻ.'],
-['Giáo viên & an toàn','Đào tạo, đánh giá năng lực, kiểm tra thiết bị, quy trình phản ánh và ghi nhận sự cố.'],
-['Quản lý đa điểm','Có thể tổ chức theo trường chính – điểm trường – lớp – giáo viên – thiết bị – lịch học.'],
-['Báo cáo hợp nhất','Nhật ký, báo cáo lớp, báo cáo định kỳ và dữ liệu phù hợp cho Ban Giám hiệu, phụ huynh.']
+['Giáo viên & an toàn','Đào tạo, đánh giá năng lực, kiểm tra thiết bị và quy trình tiếp nhận – xử lý phản ánh.'],
+['Quản lý nhiều điểm','Có thể tổ chức theo trường chính, điểm trường, lớp, giáo viên, thiết bị và lịch học.'],
+['Báo cáo cho nhà trường','Nhật ký, báo cáo lớp, báo cáo định kỳ và thông tin phù hợp dành cho phụ huynh.']
 ],
-modelsTitle:'Không mặc định trường công phải dùng một mô hình duy nhất',
-modelsLead:'Nhà trường có thể bắt đầu từ thử nghiệm nhỏ và chỉ mở rộng khi phương án chứng minh tính phù hợp, an toàn, khả thi và có nguồn lực duy trì.',
+modelsTitle:'Nhà trường có thể lựa chọn cách triển khai phù hợp nhất với điều kiện của mình.',
+modelsLead:'Có thể bắt đầu từ đào tạo giáo viên, một hoạt động trải nghiệm, một lớp, một điểm trường hoặc một mô hình đầu tư nhỏ trước khi mở rộng.',
 models:[
-['Đào tạo giáo viên trường','Tăng chủ động nhân sự, phù hợp khi nhà trường muốn tự tổ chức dài hạn.'],
-['Chuyển giao có kiểm soát','Sunbot duy trì quyền sử dụng, cập nhật và kiểm tra chất lượng trong phạm vi thỏa thuận.'],
-['STEAM Corner / Lab','Có thể gắn với đầu tư, mua sắm, tài trợ hoặc dự án; luôn đi cùng chương trình và đào tạo.'],
-['Camp / Day / nhiều điểm trường','Dùng để trải nghiệm, tổng kết hoặc thử mô hình trước khi nhân rộng.']
+['Đào tạo giáo viên nhà trường','Phù hợp khi nhà trường muốn chủ động nhân sự và tổ chức lâu dài.'],
+['Chuyển giao chương trình','Sunbot cung cấp chương trình, đào tạo, cập nhật và kiểm tra chất lượng theo phạm vi thỏa thuận.'],
+['STEAM Corner / STEAM Lab','Phù hợp với nhu cầu đầu tư thiết bị, tài trợ hoặc dự án; luôn đi cùng chương trình và hướng dẫn sử dụng.'],
+['Camp / Day / triển khai nhiều điểm','Có thể dùng để trải nghiệm, tổng kết hoặc thử nghiệm trước khi nhân rộng.']
 ],
-cta:'Khảo sát điều kiện nhà trường',
-nextLead:'Sunbot trao đổi trước về pháp nhân, số điểm trường, mục tiêu, giáo viên, cơ sở vật chất và điều kiện địa phương; sau đó mới thiết kế cấu hình triển khai.'
+cta:'Trao đổi điều kiện thực tế của nhà trường',
+nextLead:'Sunbot sẽ cùng nhà trường xem xét pháp nhân, số điểm trường, số trẻ, giáo viên, không gian và điều kiện địa phương trước khi đề xuất phương án.'
 },
 private:{
-label:'Private School',
-eyebrow:'Sunbot for Private School',
-title:'Khác biệt chương trình phải tạo ra giá trị trẻ em, phụ huynh và nhà trường cùng nhìn thấy.',
-lead:'Phiên bản dành cho trường mầm non tư thục, tập trung vào khác biệt chuyên môn, trải nghiệm phụ huynh, tuyển sinh, năng lực giáo viên và hiệu quả khai thác đầu tư.',
-insightTitle:'Một chương trình mới chỉ đáng đầu tư khi vừa tốt cho trẻ, vừa tạo được năng lực cạnh tranh cho trường',
-insight:'Sunbot hướng tới xây một sản phẩm giáo dục có lộ trình, có minh chứng, có thể tích hợp vào tuyển sinh – chăm sóc phụ huynh và có khả năng chuyển giao. Nhà trường có thể thử nhỏ, đo mức sử dụng và phản hồi trước khi mở rộng.',
-values:['Khác biệt chuyên môn','Phụ huynh hiểu giá trị','Giáo viên chủ động','Đầu tư có lộ trình'],
-problemTitle:'Trường tư đang giải đồng thời bốn bài toán: tuyển sinh, giữ chân, khác biệt và hiệu quả vận hành',
-problemLead:'Một chương trình mới không thể chỉ “trông hiện đại”. Nó phải trả lời được trẻ học gì, phụ huynh thấy gì, ai vận hành lâu dài và khoản đầu tư được khai thác ra sao.',
+label:'Dành cho trường mầm non tư thục',
+eyebrow:'Giải pháp Sunbot cho trường tư thục',
+title:'Một chương trình khác biệt chỉ thật sự có giá trị khi trẻ học tốt hơn, phụ huynh hiểu hơn và nhà trường vận hành được lâu dài.',
+lead:'Sunbot giúp trường tư xây dựng một sản phẩm giáo dục công nghệ có chiều sâu, có thể giải thích rõ với phụ huynh, hỗ trợ tuyển sinh và từng bước chuyển giao cho đội ngũ giáo viên của trường.',
+insightTitle:'Không cần đầu tư lớn ngay từ đầu. Điều cần tìm là một mô hình đủ tốt để thử, đo và phát triển lâu dài.',
+insight:'Nhà trường có thể bắt đầu từ một lớp, một khối tuổi, Sunbot Camp, Sunbot Day hoặc STEAM Corner. Khi phụ huynh phản hồi tốt, giáo viên làm chủ được chương trình và mức sử dụng hợp lý, trường mới mở rộng.',
+values:['Khác biệt có chiều sâu','Phụ huynh hiểu giá trị','Giáo viên ngày càng chủ động','Đầu tư theo từng bước'],
+problemTitle:'Trường tư cần một chương trình vừa tốt cho trẻ, vừa hợp với bài toán tuyển sinh và vận hành.',
+problemLead:'Một chương trình mới phải trả lời được bốn câu hỏi: trẻ học gì, phụ huynh nhìn thấy gì, giáo viên có thể làm chủ không và khoản đầu tư được khai thác ra sao.',
 problems:[
-['Tuyển sinh','Khác biệt phải đến từ sản phẩm giáo dục có cấu trúc, không chỉ từ việc trường “có robot” hay “có STEAM”.'],
-['Giữ chân phụ huynh','Phụ huynh cần hiểu lộ trình, hoạt động, minh chứng và tiến bộ của con thay vì chỉ nhận ảnh đẹp.'],
-['Năng lực giáo viên','Mô hình bền vững cần giúp giáo viên trường có thể học, đồng giảng và từng bước chủ động triển khai.'],
-['Hiệu quả đầu tư','Có thể thử từ lớp, khối tuổi, Camp, Day hoặc Corner; đo mức sử dụng và chi phí trước khi mở rộng Lab hay nhiều cơ sở.']
+['Tuyển sinh','Khác biệt cần đến từ một sản phẩm giáo dục có cấu trúc, không chỉ từ việc trường “có robot” hay “có STEAM”.'],
+['Giữ chân phụ huynh','Phụ huynh cần hiểu lộ trình, hoạt động và sự tiến bộ của con, thay vì chỉ nhận những hình ảnh đẹp.'],
+['Năng lực giáo viên','Sunbot có thể đào tạo, đồng giảng và chuyển giao để giáo viên trường từng bước chủ động tổ chức lớp.'],
+['Hiệu quả đầu tư','Trường có thể thử nhỏ, đo mức sử dụng, phản hồi và chi phí trước khi mở rộng sang Lab hoặc nhiều cơ sở.']
 ],
-schoolValueTitle:'Sunbot tạo một vòng giá trị cho Trẻ – Phụ huynh – Nhà trường',
-schoolValueLead:'Giá trị giáo dục được chuyển thành trải nghiệm có thể giải thích cho phụ huynh, năng lực có thể chuyển giao cho giáo viên và một sản phẩm có thể dùng trong tuyển sinh, truyền thông, giữ chân.',
+schoolValueTitle:'Sunbot tạo giá trị đồng thời cho trẻ, phụ huynh, giáo viên và nhà trường.',
+schoolValueLead:'Giá trị giáo dục được chuyển thành trải nghiệm mà phụ huynh có thể hiểu, giáo viên có thể làm chủ và nhà trường có thể dùng trong tuyển sinh, truyền thông và giữ chân.',
 schoolValues:[
-['Trẻ','Tư duy trình tự, giải quyết vấn đề, hợp tác, giao tiếp, sáng tạo, kiên trì và sử dụng công nghệ có mục đích.'],
-['Phụ huynh','Mục tiêu chương trình, minh chứng chọn lọc, nhật ký/nhận xét theo gói, sản phẩm và hoạt động tổng kết.'],
-['Nhà trường','Bản sắc chuyên môn, nội dung tuyển sinh, lộ trình 3 năm, Camp/Day và không gian Corner/Lab.'],
-['Giáo viên','Đào tạo để tự chủ hơn, giảm lệ thuộc nhân sự ngoài và có thêm năng lực truyền thông chuyên môn.']
+['Trẻ','Học cách quan sát, lập kế hoạch, thử nghiệm, sửa lỗi, hợp tác, giao tiếp và kiên trì.'],
+['Phụ huynh','Hiểu mục tiêu, thấy minh chứng học tập và theo dõi được quá trình tham gia của con.'],
+['Nhà trường','Có một sản phẩm giáo dục có lộ trình, có hoạt động trải nghiệm và có thể tạo điểm khác biệt rõ hơn.'],
+['Giáo viên','Được đào tạo để từng bước tự tổ chức chương trình, giảm phụ thuộc vào nhân sự bên ngoài.']
 ],
-modelsTitle:'Chọn mô hình theo giai đoạn phát triển, không đầu tư lớn ngay từ đầu',
-modelsLead:'Trường tư có thể đi từ kiểm chứng nhu cầu sang đồng vận hành rồi chuyển giao, thay vì phải chọn ngay giữa “thuê ngoài hoàn toàn” và “tự làm hoàn toàn”.',
+modelsTitle:'Chọn mô hình theo mục tiêu của trường, không theo một gói cố định.',
+modelsLead:'Sunbot có thể đồng hành từ giai đoạn thử nghiệm đến khi nhà trường tự chủ và nhân rộng.',
 models:[
-['Sunbot trực tiếp dạy','Khởi động nhanh, giảm rủi ro khi trường chưa có giáo viên phù hợp.'],
-['Giáo viên trường / Hybrid','Sunbot đào tạo và đồng hành để nhà trường chủ động dần.'],
-['Chuyển giao có kiểm soát','Phù hợp khi muốn sở hữu năng lực vận hành dài hạn hoặc nhân rộng nhiều cơ sở.'],
-['Core / Camp / Day / Corner / Lab','Core tạo chiều sâu; Camp/Day hỗ trợ thử nghiệm – tuyển sinh; Corner/Lab tạo không gian khai thác lâu dài.']
+['Sunbot trực tiếp giảng dạy','Phù hợp khi trường cần triển khai nhanh hoặc muốn kiểm chứng nhu cầu trước.'],
+['Giáo viên trường triển khai','Giúp trường chủ động nhân sự, tích hợp vào chương trình chung và giảm phụ thuộc dài hạn.'],
+['Chuyển giao có kiểm soát','Phù hợp với trường muốn xây năng lực vận hành lâu dài hoặc phát triển nhiều lớp, nhiều cơ sở.'],
+['Camp / Day / Corner / Lab','Có thể dùng cho hè, tuyển sinh, trải nghiệm phụ huynh hoặc đầu tư không gian theo từng giai đoạn.']
 ],
-cta:'Khám phá mô hình phù hợp',
-nextLead:'Sunbot cùng nhà trường xác định mục tiêu giáo dục – tuyển sinh, quy mô, nhân sự và mức đầu tư; thử nghiệm có tiêu chí rồi mới chuẩn hóa và mở rộng.'
+cta:'Cùng Sunbot thiết kế một mô hình phù hợp với trường',
+nextLead:'Sunbot sẽ cùng nhà trường xác định mục tiêu giáo dục, tuyển sinh, số trẻ, giáo viên, không gian và mức đầu tư trước khi xây phương án cụ thể.'
 },
 system:{
-label:'School System',
-eyebrow:'Sunbot for School Systems',
-title:'Một chương trình. Nhiều cơ sở. Một chuẩn chất lượng.',
-lead:'Phiên bản dành cho hệ thống trường, tập trung vào chuẩn hóa chương trình, đào tạo tập trung, phân quyền, kiểm soát chất lượng, dữ liệu và báo cáo hợp nhất trên nhiều cơ sở.',
-insightTitle:'Thách thức của hệ thống không phải triển khai một lớp tốt, mà là giữ chất lượng đồng đều khi nhân rộng',
-insight:'Sunbot tổ chức chương trình theo chuẩn chung nhưng cho phép phân quyền theo cơ sở, đào tạo giáo viên theo cấp độ, theo dõi thiết bị và báo cáo hợp nhất. Mục tiêu là tăng khả năng mở rộng mà không làm mất bản sắc và chất lượng.',
-values:['Chuẩn hóa chương trình','Đào tạo tập trung','QC đa cơ sở','Dashboard hợp nhất'],
-problemTitle:'Khi số cơ sở tăng, những sai lệch nhỏ về giáo viên, học liệu và vận hành sẽ nhanh chóng thành vấn đề hệ thống',
-problemLead:'Hệ thống cần một kiến trúc chung nhưng vẫn đủ linh hoạt để từng cơ sở vận hành trong điều kiện thực tế của mình.',
+label:'Dành cho hệ thống trường',
+eyebrow:'Giải pháp Sunbot cho hệ thống nhiều cơ sở',
+title:'Một chương trình chung, nhưng vẫn phải vận hành tốt ở từng cơ sở.',
+lead:'Sunbot hỗ trợ hệ thống trường chuẩn hóa chương trình, đào tạo giáo viên, phân quyền triển khai, theo dõi chất lượng và tổng hợp báo cáo giữa nhiều cơ sở.',
+insightTitle:'Thách thức của một hệ thống không phải là làm tốt một lớp, mà là giữ chất lượng ổn định khi nhân rộng.',
+insight:'Khi số cơ sở và giáo viên tăng lên, chương trình cần có chuẩn chung nhưng vẫn đủ linh hoạt để phù hợp với điều kiện từng trường. Sunbot tổ chức theo hướng đào tạo tập trung, phân quyền rõ và kiểm soát chất lượng theo cùng một hệ thống.',
+values:['Chuẩn chương trình thống nhất','Đào tạo tập trung','Theo dõi chất lượng nhiều cơ sở','Báo cáo hợp nhất'],
+problemTitle:'Càng nhiều cơ sở, càng cần một cách tổ chức rõ ràng.',
+problemLead:'Nếu chỉ nhân bản tài liệu, chất lượng dễ chênh lệch giữa các trường. Hệ thống cần quản lý được giáo viên, thiết bị, lịch học, quyền sử dụng và báo cáo.',
 problems:[
-['Chuẩn chương trình','Cùng một lộ trình, mục tiêu, giáo án và tiêu chí quan sát trên toàn hệ thống.'],
-['Đào tạo theo cấp','Đào tạo tập trung, đánh giá giáo viên, tái đào tạo và hình thành đội ngũ nòng cốt nội bộ.'],
-['Phân quyền cơ sở','Theo dõi lớp, giáo viên, thiết bị, lịch và quyền sử dụng theo từng campus.'],
-['Báo cáo hợp nhất','So sánh mức triển khai, chất lượng và nhu cầu hỗ trợ giữa nhiều cơ sở.']
+['Chất lượng không đồng đều','Cùng một chương trình nhưng cách hiểu và cách tổ chức lớp có thể khác nhau giữa các cơ sở.'],
+['Đào tạo giáo viên','Hệ thống cần chuẩn đào tạo, đánh giá và tái đào tạo thay vì phụ thuộc vào từng cá nhân.'],
+['Phân quyền & thiết bị','Cần biết cơ sở nào sử dụng chương trình gì, có bao nhiêu thiết bị và ai chịu trách nhiệm vận hành.'],
+['Báo cáo hợp nhất','Ban điều hành cần nhìn được toàn hệ thống nhưng vẫn có thể đi sâu tới từng cơ sở khi cần.']
 ],
-schoolValueTitle:'Từ một sản phẩm giáo dục thành năng lực hệ thống',
-schoolValueLead:'Sunbot có thể chuẩn hóa nội dung, đào tạo và QC tập trung trong khi cho từng cơ sở triển khai theo quy mô và lịch riêng.',
+schoolValueTitle:'Sunbot giúp hệ thống vừa chuẩn hóa, vừa giữ được khả năng điều chỉnh theo từng cơ sở.',
+schoolValueLead:'Chương trình, đào tạo, quyền sử dụng, kiểm soát chất lượng và báo cáo được tổ chức theo một kiến trúc chung.',
 schoolValues:[
-['Program Standard','Hai phân môn, cấu hình, Core/Camp/Day và chuẩn học liệu dùng chung.'],
-['Teacher System','Khung đào tạo, đánh giá, phân cấp và tái đào tạo cho giáo viên nhiều cơ sở.'],
-['Operations','Quy trình lịch, thiết bị, học liệu, phản ánh và kiểm tra chéo.'],
-['Data & QC','Tài khoản, báo cáo hợp nhất, dashboard và dữ liệu phục vụ quản trị hệ thống.']
+['Chuẩn chương trình','Lộ trình, giáo án, học liệu và yêu cầu triển khai được thống nhất trên toàn hệ thống.'],
+['Đào tạo theo cấp độ','Đào tạo tập trung, đánh giá năng lực và hỗ trợ giáo viên theo từng giai đoạn.'],
+['Phân quyền triển khai','Quản lý theo hệ thống – cơ sở – lớp – giáo viên – thiết bị.'],
+['Báo cáo & kiểm soát','Theo dõi chất lượng theo từng cơ sở và tổng hợp cho Ban điều hành.']
 ],
-modelsTitle:'Triển khai theo pilot → chuẩn hóa → nhân rộng',
-modelsLead:'Một hoặc vài cơ sở được chọn làm pilot, sau đó mới chuẩn hóa bộ vận hành và mở rộng.',
+modelsTitle:'Có thể triển khai theo từng cơ sở rồi chuẩn hóa để nhân rộng.',
+modelsLead:'Hệ thống không cần mở đồng loạt từ đầu; có thể chọn một vài cơ sở đại diện để thử nghiệm và hoàn thiện mô hình.',
 models:[
-['Pilot campus','Kiểm chứng chương trình, nhân sự, chi phí và phản hồi trước.'],
-['Train-the-trainer','Xây giáo viên nòng cốt hoặc đội đào tạo nội bộ cho hệ thống.'],
-['Controlled transfer','Cấp quyền theo cơ sở/phạm vi với cập nhật và QC định kỳ.'],
-['Multi-campus rollout','Mở rộng theo đợt, dùng chung chuẩn nhưng đo riêng từng cơ sở.']
+['Pilot tại cơ sở đại diện','Thử chương trình, đo khả năng vận hành và hoàn thiện quy trình trước khi nhân rộng.'],
+['Đào tạo tập trung','Sunbot đào tạo nhóm giáo viên nòng cốt và xây cơ chế hỗ trợ nội bộ.'],
+['Chuyển giao theo hệ thống','Cấp quyền sử dụng, cập nhật và kiểm soát chất lượng theo phạm vi nhiều cơ sở.'],
+['Chuẩn hóa dữ liệu & báo cáo','Thống nhất cách ghi nhận, báo cáo và theo dõi chất lượng trên toàn hệ thống.']
 ],
-cta:'Trao đổi phương án hệ thống',
-nextLead:'Bước đầu nên chọn cơ sở pilot, xác định chuẩn giáo viên – thiết bị – dữ liệu, rồi mới xây lộ trình nhân rộng.'
+cta:'Trao đổi phương án triển khai cho hệ thống',
+nextLead:'Sunbot cùng Ban điều hành xác định số cơ sở, số trẻ, đội ngũ giáo viên, mô hình phân quyền và lộ trình thử nghiệm trước khi mở rộng.'
 }
 };
