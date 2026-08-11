@@ -12,57 +12,12 @@ const leads={common:'Phiếu này chỉ hỏi những thông tin cần thiết �
 const chip=document.getElementById('audience-chip');chip.textContent=school?`${labels[audience]||labels.common} · ${school}`:(labels[audience]||labels.common);
 document.getElementById('survey-title').textContent=titles[audience]||titles.common;
 document.getElementById('survey-lead').textContent=(leads[audience]||leads.common)+' Việc cung cấp thông tin không tạo ra nghĩa vụ tài chính hoặc cam kết triển khai.';
-
-function applyAudience(){
- document.querySelectorAll('.public-only,.private-only,.system-only,.public-system,.private-system,.only-common').forEach(x=>x.classList.remove('show'));
- if(audience==='public'){document.querySelectorAll('.public-only,.public-system').forEach(x=>x.classList.add('show'))}
- else if(audience==='private'){document.querySelectorAll('.private-only,.private-system').forEach(x=>x.classList.add('show'))}
- else if(audience==='system'){document.querySelectorAll('.system-only,.public-system,.private-system').forEach(x=>x.classList.add('show'))}
- else document.querySelectorAll('.only-common,.public-system,.private-system').forEach(x=>x.classList.add('show'));
- body.dataset.audience=audience;
-}
-applyAudience();
-
-const audienceSelect=document.querySelector('[name="audience_select"]');
-if(audienceSelect)audienceSelect.addEventListener('change',e=>{if(e.target.value){audience=e.target.value;applyAudience();chip.textContent=labels[audience]||labels.common}});
-
-document.querySelectorAll('[name="relation"]').forEach(r=>r.addEventListener('change',()=>{
- document.querySelectorAll('.branch').forEach(x=>x.classList.remove('active'));
- const t=document.getElementById('relation-'+r.value);if(t)t.classList.add('active');updateProgress();
-}));
-
-document.querySelectorAll('#goals input').forEach(x=>x.addEventListener('change',()=>{
- const checked=[...document.querySelectorAll('#goals input:checked')];if(checked.length>3){x.checked=false;alert('Nhà trường vui lòng chọn tối đa 3 ưu tiên.');}
-}));
-
-const form=document.getElementById('survey-form');
-const cards=[...document.querySelectorAll('.qcard')];
-function visibleCards(){return cards.filter(c=>getComputedStyle(c).display!=='none')}
-function updateProgress(){
- const visible=visibleCards();let done=0;
- visible.forEach(c=>{const req=[...c.querySelectorAll('[required]')];if(req.length===0||req.every(el=>el.type==='radio'?[...c.querySelectorAll(`[name="${el.name}"]`)].some(r=>r.checked):!!el.value))done++});
- const pct=Math.max(8,Math.round(done/visible.length*100));document.getElementById('progress-bar').style.width=pct+'%';document.getElementById('progress-text').textContent=done===visible.length?'Sẵn sàng hoàn tất':`${done}/${visible.length} phần đã đủ thông tin`;
-}
-form.addEventListener('input',updateProgress);form.addEventListener('change',updateProgress);updateProgress();
-
-function qs(params){const q=new URLSearchParams();if(audience!=='common')q.set('audience',audience);if(guided)q.set('guided','1');if(school)q.set('school',school);if(source)q.set('source',source);return q.toString()?'?'+q.toString():''}
-document.getElementById('profile-link').href='../profile-v2/'+qs();
-document.getElementById('back-catalogue').href='../catalogue/'+qs();
-
-form.addEventListener('submit',e=>{
- e.preventDefault();
- const fd=new FormData(form);const lines=[];
- lines.push('PHIẾU TRAO ĐỔI NHU CẦU SUNBOT');
- lines.push('Đối tượng: '+(labels[audience]||labels.common));
- if(school)lines.push('Trường: '+school);if(source)lines.push('Nguồn/người gửi: '+source);
- lines.push('---');
- const names={school_name:'Tên trường/đơn vị',contact_name:'Người trao đổi',contact_role:'Vai trò',phone:'Điện thoại',email:'Email',children:'Quy mô trẻ',classes:'Số lớp',relation:'Quan hệ với Sunbot',existing_status:'Tình trạng Sunbot',equipment_status:'Thiết bị',existing_need:'Nhu cầu trường cũ',aware_reason:'Lý do chưa triển khai trước đây',aware_change:'Điều thay đổi hiện nay',current_program:'Chương trình tương tự hiện có',goal:'Mục tiêu',top_goal:'Mục tiêu ưu tiên',content:'Nội dung quan tâm',format:'Hình thức quan tâm',teacher_model:'Mô hình giáo viên',teacher_count:'Số giáo viên',space:'Không gian',public_sites:'Số điểm trường',public_legal:'Tình trạng sau sắp xếp',public_model:'Hướng trường công có thể xem xét',public_constraints:'Yêu cầu/giới hạn trường công',private_priority:'Ưu tiên trường tư',private_metric:'Chỉ số hiệu quả trường tư',system_sites:'Số cơ sở hệ thống',system_decision:'Cơ chế quyết định',system_standard:'Mục tiêu chuẩn hóa',pilot_site:'Cơ sở thử nghiệm',start_scale:'Quy mô bắt đầu',timing:'Thời điểm',decision_people:'Người cần tham gia',next_step:'Bước tiếp theo',notes:'Ghi chú'};
- const grouped={};for(const [k,v] of fd.entries()){if(!v)continue;(grouped[k]||(grouped[k]=[])).push(v)};
- Object.entries(grouped).forEach(([k,v])=>{if(k==='audience_select')return;lines.push(`${names[k]||k}: ${v.join(', ')}`)});
- const text=lines.join('\n');
- localStorage.setItem('sunbot_survey_latest',JSON.stringify({audience,school,source,ts:new Date().toISOString(),text}));
- document.getElementById('result-text').textContent=text;
- const mail=document.getElementById('email-result');mail.href='mailto:sunbotvietnam@gmail.com?subject='+encodeURIComponent('Phiếu nhu cầu Sunbot'+(school?' - '+school:''))+'&body='+encodeURIComponent(text);
- document.getElementById('result').hidden=false;document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
-});
+function applyAudience(){document.querySelectorAll('.public-only,.private-only,.system-only,.public-system,.private-system,.only-common').forEach(x=>x.classList.remove('show'));if(audience==='public'){document.querySelectorAll('.public-only,.public-system').forEach(x=>x.classList.add('show'))}else if(audience==='private'){document.querySelectorAll('.private-only,.private-system').forEach(x=>x.classList.add('show'))}else if(audience==='system'){document.querySelectorAll('.system-only,.public-system,.private-system').forEach(x=>x.classList.add('show'))}else document.querySelectorAll('.only-common,.public-system,.private-system').forEach(x=>x.classList.add('show'));body.dataset.audience=audience}applyAudience();
+const audienceSelect=document.querySelector('[name="audience_select"]');if(audienceSelect)audienceSelect.addEventListener('change',e=>{if(e.target.value){audience=e.target.value;applyAudience();chip.textContent=labels[audience]||labels.common}});
+document.querySelectorAll('[name="relation"]').forEach(r=>r.addEventListener('change',()=>{document.querySelectorAll('.branch').forEach(x=>x.classList.remove('active'));const t=document.getElementById('relation-'+r.value);if(t)t.classList.add('active');updateProgress()}));
+document.querySelectorAll('#goals input').forEach(x=>x.addEventListener('change',()=>{const checked=[...document.querySelectorAll('#goals input:checked')];if(checked.length>3){x.checked=false;alert('Nhà trường vui lòng chọn tối đa 3 ưu tiên.')}}));
+const form=document.getElementById('survey-form');const cards=[...document.querySelectorAll('.qcard')];function visibleCards(){return cards.filter(c=>getComputedStyle(c).display!=='none')}function updateProgress(){const visible=visibleCards();let done=0;visible.forEach(c=>{const req=[...c.querySelectorAll('[required]')];if(req.length===0||req.every(el=>el.type==='radio'?[...c.querySelectorAll(`[name="${el.name}"]`)].some(r=>r.checked):!!el.value))done++});const pct=Math.max(8,Math.round(done/visible.length*100));document.getElementById('progress-bar').style.width=pct+'%';document.getElementById('progress-text').textContent=done===visible.length?'Sẵn sàng hoàn tất':`${done}/${visible.length} phần đã đủ thông tin`}form.addEventListener('input',updateProgress);form.addEventListener('change',updateProgress);updateProgress();
+function qs(){const q=new URLSearchParams();if(audience!=='common')q.set('audience',audience);if(guided)q.set('guided','1');if(school)q.set('school',school);if(source)q.set('source',source);return q.toString()?'?'+q.toString():''}document.getElementById('profile-link').href='../profile-v2/'+qs();document.getElementById('back-catalogue').href='../catalogue/'+qs();
+form.addEventListener('submit',e=>{e.preventDefault();const fd=new FormData(form);const lines=[];lines.push('PHIẾU TRAO ĐỔI NHU CẦU SUNBOT');lines.push('Đối tượng: '+(labels[audience]||labels.common));if(school)lines.push('Trường: '+school);if(source)lines.push('Nguồn/người gửi: '+source);lines.push('---');const names={school_name:'Tên trường/đơn vị',contact_name:'Người trao đổi',contact_role:'Vai trò',phone:'Điện thoại',email:'Email',children:'Quy mô trẻ',classes:'Số lớp',relation:'Quan hệ với Sunbot',existing_status:'Tình trạng Sunbot',equipment_status:'Thiết bị',existing_need:'Nhu cầu trường cũ',aware_reason:'Lý do chưa triển khai trước đây',aware_change:'Điều thay đổi hiện nay',current_program:'Chương trình tương tự hiện có',goal:'Mục tiêu',top_goal:'Mục tiêu ưu tiên',content:'Nội dung quan tâm',format:'Hình thức quan tâm',teacher_model:'Mô hình giáo viên',teacher_count:'Số giáo viên',space:'Không gian',public_sites:'Số điểm trường',public_legal:'Tình trạng sau sắp xếp',public_model:'Hướng trường công có thể xem xét',public_constraints:'Yêu cầu/giới hạn trường công',private_priority:'Ưu tiên trường tư',private_metric:'Chỉ số hiệu quả trường tư',system_sites:'Số cơ sở hệ thống',system_decision:'Cơ chế quyết định',system_standard:'Mục tiêu chuẩn hóa',pilot_site:'Cơ sở thử nghiệm',start_scale:'Quy mô bắt đầu',timing:'Thời điểm',decision_people:'Người cần tham gia',next_step:'Bước tiếp theo',notes:'Ghi chú'};const grouped={};for(const [k,v] of fd.entries()){if(!v)continue;(grouped[k]||(grouped[k]=[])).push(v)}Object.entries(grouped).forEach(([k,v])=>{if(k==='audience_select')return;lines.push(`${names[k]||k}: ${v.join(', ')}`)});const text=lines.join('\n');localStorage.setItem('sunbot_survey_latest',JSON.stringify({audience,school,source,ts:new Date().toISOString(),text}));document.getElementById('result-text').textContent=text;const mail=document.getElementById('email-result');mail.href='mailto:sunbotvietnam@gmail.com?subject='+encodeURIComponent('Phiếu nhu cầu Sunbot'+(school?' - '+school:''))+'&body='+encodeURIComponent(text);document.getElementById('result').hidden=false;document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'})});
 })();
+(function(){const c=document.createElement('script');c.src='../telemetry/config.js';c.onload=()=>{const t=document.createElement('script');t.src='../telemetry/client.js';t.onload=()=>{const s=document.createElement('script');s.src='telemetry.js';document.head.appendChild(s)};document.head.appendChild(t)};document.head.appendChild(c)})();
