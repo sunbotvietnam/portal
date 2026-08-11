@@ -1,0 +1,1 @@
+window.SUNBOT_TELEMETRY_CONFIG={endpoint:'',version:'1.0',enabled:true};
