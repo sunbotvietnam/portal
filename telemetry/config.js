@@ -1,1 +1,1 @@
-window.SUNBOT_TELEMETRY_CONFIG={endpoint:'',version:'1.0',enabled:true};
+window.SUNBOT_TELEMETRY_CONFIG={endpoint:'https://script.google.com/macros/s/AKfycbw32BGSXwFVOpRCknx5hn8-k2m5ZXox26_y2mnZKVWL0JKHCv_Qtly5JiY0FS9e87kU/exec',version:'2.0',enabled:true};
